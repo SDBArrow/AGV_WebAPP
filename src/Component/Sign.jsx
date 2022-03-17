@@ -54,7 +54,7 @@ function Sign() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <input className="w-80 ml-4 mt-1 pl-1" type="email" name="email" placeholder="Username@gmail.com" onChange={GetEmail} />
+                            <input className="w-80 ml-4 mt-1 pl-1 rounded-lg h-6" type="email" name="email" placeholder="Username@gmail.com" onChange={GetEmail} />
                         </div>
                     </div>
                     <div className="bg-white h-20 mt-8  rounded-2xl py-3">
@@ -63,7 +63,7 @@ function Sign() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
-                            <input className="w-80 ml-4 mt-1 pl-1" type="password" name="password" placeholder="············" onChange={GetPassword} />
+                            <input className="w-80 ml-4 mt-1 pl-1 rounded-lg h-6" type="password" name="password" placeholder="············" onChange={GetPassword} />
                         </div>
                     </div>
                     <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800" onClick={Loginaccount}>登入</button>

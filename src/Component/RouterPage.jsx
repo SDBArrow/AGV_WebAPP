@@ -17,7 +17,6 @@ function RouterPage() {
                 <Route path="*" element={<Error />} />
                 <Route path="/Sign" element={<Sign />} />
                 <Route path="/ControlPage" element={<ControlPage />} />
-                <Route path="/Header" element={<Header />} />
             </Routes>
         </Router>
     );
