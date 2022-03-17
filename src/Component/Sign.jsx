@@ -32,7 +32,7 @@ function Sign() {
             .then((responseJson) => {
                 if (responseJson.code === "11") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    navigate('/Hall')
+                    navigate('/')
                 } else if(responseJson.code === "12"){
                     setInputValue(responseJson.message)
                     setButtonPop(true)

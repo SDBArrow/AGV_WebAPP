@@ -37,7 +37,7 @@ function Forget() {
             .then(response => response.json())
             .then((responseJson) => {
                 if (responseJson.code === "51") {
-                    navigate('/')
+                    navigate('/Sign')
                 } else if (responseJson.code === "52") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
@@ -62,7 +62,7 @@ function Forget() {
                 </div>
             </div>
             <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={bt_forget} onClick={Forget} >發送救援信件</button>
-            <div className=" grid gap-72 grid-cols-2 mt-8 "><span className="w-8 cursor-pointer"><Link to="/">登入</Link></span><span className="cursor-pointer"><Link to="/Register">註冊</Link></span></div>
+            <div className=" grid gap-72 grid-cols-2 mt-8 "><span className="w-8 cursor-pointer"><Link to="/Sign">登入</Link></span><span className="cursor-pointer"><Link to="/Register">註冊</Link></span></div>
         </div>
     );
 
