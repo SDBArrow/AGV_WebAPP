@@ -1,9 +1,9 @@
-import Body from './Component/Body';
+import RouterPage from './Component/RouterPage';
 
 function App() {
   return (
     <div className="App">
-      <Body />
+      <RouterPage />
     </div>
   );
 }

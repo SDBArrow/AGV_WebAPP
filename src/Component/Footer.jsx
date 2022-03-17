@@ -3,13 +3,11 @@ import { Container } from 'react-bootstrap';
 
 class Footer extends Component {
     state = {};
-    render() { 
+    render() {
         return (
-        <Container className="text-center">
-            <p>AIMMA Lab &copy; 2021</p>
-        </Container>
+            <h1 className="text-center ">AIMMA Lab &copy; 2021</h1>
         );
     }
 }
- 
+
 export default Footer;
