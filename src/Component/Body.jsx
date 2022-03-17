@@ -13,11 +13,11 @@ class Body extends Component {
         return (
             <Router>
                 <Routes>
-                    <Route path="/" element={<Sign />} />
+                    <Route path="/" element={<Hall />} />
                     <Route path="/Register" element={<Register />} />
                     <Route path="/Forget" element={<Forget />} />
                     <Route path="*" element={<Error />} />
-                    <Route path="/Hall" element={<Hall />} />
+                    <Route path="/Sign" element={<Sign />} />
                 </Routes>
             </Router>
         );
