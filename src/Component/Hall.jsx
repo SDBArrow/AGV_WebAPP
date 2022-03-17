@@ -6,7 +6,7 @@ function Hall() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const data = localStorage.getItem("jwt")
+    const data = { jwt: localStorage.getItem("jwt")}
 
     const requestOptions = {
       method: 'POST',
@@ -24,7 +24,7 @@ function Hall() {
           navigate('/sign')
         }
       })
-  }, [])
+  })
 
   return (
     <div className="App">
