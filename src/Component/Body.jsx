@@ -1,20 +1,14 @@
 import React from 'react';
-import Connection from './Connection';
-import Teleoperation from './Teleoperation';
-import RobotState from './RobotState';
-import Map from './Map';
+import ControlPage from './ControlPage'
+import Hall from './Hall'
 
-function ControlPage() {
+
+function Body() {
     return (
         <div>
-            <p className="text-center text-5xl mt-5">AGV Control Page</p>
-            <Connection />
-            <Teleoperation />
-            <h1>MAP</h1>
-            <Map></Map>
-            <RobotState />
+
         </div>
     );
 }
 
-export default ControlPage;
+export default Body;

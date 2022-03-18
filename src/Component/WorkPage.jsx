@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import React, {useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
 
-function Hall() {
+function WorkPage() {
 
   const navigate = useNavigate();
 
@@ -37,4 +37,4 @@ function Hall() {
   );
 }
 
-export default Hall;
+export default WorkPage;

@@ -33,13 +33,12 @@ function Sign() {
                 if (responseJson.code === "11") {
                     localStorage.setItem("jwt", responseJson.jwt);
                     navigate('/')
-                } else if(responseJson.code === "12"){
+                } else if (responseJson.code === "12") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }
             })
     }
-
 
     return (
         <div className='w-full p-3 bg-gray-100 border rounded-lg shadow-lg justify-center'>
@@ -72,7 +71,6 @@ function Sign() {
             </div>
         </div>
     );
-
 }
 
 export default Sign;

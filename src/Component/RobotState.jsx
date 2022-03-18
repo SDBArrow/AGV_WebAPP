@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Config from "../scripts/Config";
 import * as Three from "three";
 
@@ -49,8 +49,7 @@ class RobotState extends Component {
         }
     }
 
-
-    componentDidMount(){
+    componentDidMount() {
         this.getRobotState();
     }
 
@@ -63,8 +62,8 @@ class RobotState extends Component {
         });
 
         pose_subscriber.subscribe((message) => {
-            this.setState({x: message.pose.position.x.toFixed(5)});
-            this.setState({y: message.pose.position.y.toFixed(5)});
+            this.setState({ x: message.pose.position.x.toFixed(5) });
+            this.setState({ y: message.pose.position.y.toFixed(5) });
             this.setState({
                 orientation: this.getOrientationFromQuaternion(
                     message.pose.orientation
@@ -78,10 +77,10 @@ class RobotState extends Component {
             ros_orientation_quaternion.y,
             ros_orientation_quaternion.z,
             ros_orientation_quaternion.w
-            );
+        );
         //convert this quaternion into Roll, Pitch and yaw
         var RPY = new Three.Euler().setFromQuaternion(q); //將四元數轉換成尤拉角
-        return RPY["_z"] * (180/Math.PI);
+        return RPY["_z"] * (180 / Math.PI);
     }
 
     render() {

@@ -41,7 +41,7 @@ function Forget() {
                 } else if (responseJson.code === "52") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
-                }else if (responseJson.code === "01") {
+                } else if (responseJson.code === "01") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }
@@ -65,6 +65,5 @@ function Forget() {
             <div className=" grid gap-72 grid-cols-2 mt-8 "><span className="w-8 cursor-pointer"><Link to="/Sign">登入</Link></span><span className="cursor-pointer"><Link to="/Register">註冊</Link></span></div>
         </div>
     );
-
 }
 export default Forget;

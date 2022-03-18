@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Hall() {
+function Userset() {
 
   return (
     <div>
@@ -9,4 +9,4 @@ function Hall() {
   );
 }
 
-export default Hall;
+export default Userset;

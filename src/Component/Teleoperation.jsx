@@ -3,7 +3,7 @@ import { Joystick } from "react-joystick-component";
 import Config from "../scripts/Config";
 
 class Teleoperation extends Component {
-    state = { ros:null};
+    state = { ros: null };
 
     constructor() {
         super();
@@ -49,15 +49,15 @@ class Teleoperation extends Component {
         var cmd_vel = new window.ROSLIB.Topic({
             ros: this.state.ros,
             name: Config.CMD_VEL_TOPIC,
-            messageType: "geomtry_msgs/Twist", 
+            messageType: "geomtry_msgs/Twist",
         });
         var twist = new window.ROSLIB.Message({
-            linear:{
+            linear: {
                 x: Event.y / 50,
                 y: 0,
                 z: 0,
             },
-            angular:{
+            angular: {
                 x: 0,
                 y: 0,
                 z: -Event.x / 50,
@@ -73,12 +73,12 @@ class Teleoperation extends Component {
             messageType: "geomtery_msgs/Twist",
         });
         var twist = new window.ROSLIB.Message({
-            linear:{
+            linear: {
                 x: 0,
                 y: 0,
                 z: 0,
             },
-            angular:{
+            angular: {
                 x: 0,
                 y: 0,
                 z: 0,

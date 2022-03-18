@@ -111,7 +111,6 @@ function Register() {
             })
     }
 
-
     return (
         <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4">
             <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
@@ -157,7 +156,6 @@ function Register() {
             <div className=" grid gap-48 grid-cols-2 mt-8"><span className="w-8 cursor-pointer"><Link to="/Sign">登入</Link></span><span className="cursor-pointer"><Link to="/Forget">忘記密碼?</Link></span></div>
         </div>
     );
-
 }
 
 export default Register;

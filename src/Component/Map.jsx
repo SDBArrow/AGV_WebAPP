@@ -7,7 +7,7 @@ class Map extends Component {
         ros: null,
     };
 
-    constructor(){
+    constructor() {
         super();
         this.view_map = this.view_map.bind(this);
     }
@@ -23,16 +23,16 @@ class Map extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.init_connection();
         this.view_map();
     }
 
-    view_map(){
+    view_map() {
         var viewer = new window.ROS2D.Viewer({
             divID: "nav_div",
-            width:640,
-            height:480,
+            width: 640,
+            height: 480,
         });
 
         var navClient = new window.NAV2D.OccupancyGridClientNav({
@@ -43,14 +43,14 @@ class Map extends Component {
             withOrientation: true,
         });
     }
-    
-    render() { 
+
+    render() {
         return (
             <div>
-                <div id = "nav_div">Viewer</div>
+                <div id="nav_div">Viewer</div>
             </div>
         );
     }
 }
- 
+
 export default Map;
