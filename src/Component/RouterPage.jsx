@@ -15,8 +15,8 @@ function RouterPage() {
         <Router>
             <Routes>
                 <Route path="/" element={<WorkPage />} >
-                    <Route path="/HighCtrl" element={<HighCtrl />} />
                     <Route index element={<Hall />} />
+                    <Route path="/HighCtrl" element={<HighCtrl />} />
                     <Route path="/GeneralCtrl" element={<GeneralCtrl />} />
                     <Route path="/Userset" element={<Userset />} />
                 </Route>
