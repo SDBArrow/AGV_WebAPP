@@ -4,7 +4,7 @@ function GeneralCtrl() {
 
   return (
     <div>
-
+      <h1>GeneralCtrl</h1>
     </div>
   );
 }

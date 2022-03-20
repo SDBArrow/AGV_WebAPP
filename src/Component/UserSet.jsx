@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Userset() {
+function UserSet() {
 
   return (
     <div>
-
+      <h1>UserSet</h1>
     </div>
   );
 }
 
-export default Userset;
+export default UserSet;

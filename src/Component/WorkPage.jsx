@@ -1,8 +1,7 @@
 import React, {useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Outlet} from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
-import Body from './Body';
 
 function WorkPage() {
 
@@ -24,7 +23,7 @@ function WorkPage() {
         if (responseJson.code === "41") {
 
         } else {
-          navigate('/sign')
+          navigate('/Sign')
         }
       })
   })
@@ -32,7 +31,7 @@ function WorkPage() {
   return (
     <div className='bg-background h-full w-screen'>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </div>
   );

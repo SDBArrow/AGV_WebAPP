@@ -4,19 +4,25 @@ import Sign from './Sign';
 import Register from './Register';
 import Forget from './Forget';
 import Error from './Error';
-import HighCtrl from './HighCtrl';
 import WorkPage from './WorkPage';
+import HighCtrl from './HighCtrl';
+import Hall from './Hall';
+import GeneralCtrl from './GeneralCtrl';
+import Userset from './UserSet';
 
 function RouterPage() {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<WorkPage />} >
-                    <Route path="Sign" element={<Sign />} />
-                    <Route path="HighCtrl" element={<HighCtrl />} />
-                    <Route path="Register" element={<Register />} />
-                    <Route path="Forget" element={<Forget />} />
+                    <Route path="/HighCtrl" element={<HighCtrl />} />
+                    <Route index element={<Hall />} />
+                    <Route path="/GeneralCtrl" element={<GeneralCtrl />} />
+                    <Route path="/Userset" element={<Userset />} />
                 </Route>
+                <Route path="/Sign" element={<Sign />} />
+                <Route path="/Register" element={<Register />} />
+                <Route path="/Forget" element={<Forget />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </Router>
