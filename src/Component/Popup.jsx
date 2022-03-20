@@ -1,7 +1,7 @@
 import React from 'react';
 import './Popup.css';
 
-export default function Popup(props) {
+function Popup(props) {
     const { children, inputValue } = props;
     return (props.trigger) ? (
         <div className="popup">
@@ -12,4 +12,7 @@ export default function Popup(props) {
         </div>
     ) : "";
 }
+
+
+export default Popup
 

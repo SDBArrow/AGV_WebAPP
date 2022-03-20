@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useNavigate ,Outlet} from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
@@ -6,6 +6,7 @@ import Footer from './Footer';
 function WorkPage() {
 
   const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     const data = { jwt: localStorage.getItem("jwt") }
@@ -29,7 +30,7 @@ function WorkPage() {
   })
 
   return (
-    <div className='bg-background h-full w-screen'>
+    <div className='h-full w-screen'>
       <Header />
       <Outlet />
       <Footer />

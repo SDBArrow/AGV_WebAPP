@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply flex justify-center p-5;
+  @apply flex justify-center;
   background: #dde5f4;
 }

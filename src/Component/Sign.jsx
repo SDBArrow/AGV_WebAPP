@@ -41,13 +41,13 @@ function Sign() {
     }
 
     return (
-        <div className='w-full p-3 bg-gray-100 border rounded-lg shadow-lg justify-center'>
+        <div className='w-full p-3 bg-gray-100 border rounded-lg shadow-lg justify-center mt-5'>
             <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
             <div className='flex flex-col gap-24 sm:flex-row sm:w-full sm:gap-24'>
                 <Image />
                 <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4">
                     <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
-                    <div className="bg-white h-20 mt-16  rounded-2xl py-3">
+                    <div className="bg-white h-20 mt-16  rounded-2xl py-3 p-5">
                         <label htmlFor="email" className="ml-4">Email 信箱</label>
                         <div className="flex mx-4">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,7 +56,7 @@ function Sign() {
                             <input className="w-80 ml-4 mt-1 pl-1 rounded-lg h-6 " type="email" name="email" placeholder="Username@gmail.com" onChange={GetEmail} />
                         </div>
                     </div>
-                    <div className="bg-white h-20 mt-8  rounded-2xl py-3">
+                    <div className="bg-white h-20 mt-8  rounded-2xl py-3 p-5">
                         <label htmlFor="password" className="ml-4">密碼</label>
                         <div className="flex mx-4">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

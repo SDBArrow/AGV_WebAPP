@@ -49,7 +49,7 @@ function Forget() {
     }
 
     return (
-        <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4">
+        <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 p-5">
             <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
             <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
             <div className="bg-white h-20 mt-16  rounded-2xl py-3">

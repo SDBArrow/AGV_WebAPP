@@ -112,7 +112,7 @@ function Register() {
     }
 
     return (
-        <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4">
+        <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
             <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
             <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
             <div className="h-20 mt-16 gap-8 flex ">
