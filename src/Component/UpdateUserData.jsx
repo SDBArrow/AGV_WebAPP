@@ -71,7 +71,7 @@ function Update() {
                     <input className="h-7 w-32 mt-1 ml-4 pl-1" type="lastname" name="lastname" placeholder="Ke" onChange={GetLastName} />
                 </div>
             </div>
-            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={registeraccount}>修改</button>
+            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={registeraccount}>更改資料</button>
         </div>
     );
 }

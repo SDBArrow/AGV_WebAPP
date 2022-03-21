@@ -1,11 +1,13 @@
 import React from 'react';
-import Update from './Update';
+import UpdateUserData from './UpdateUserData';
+import UpdatePassword from './UpdatePassword';
 
 function UserSet() {
 
   return (
-    <div>
-      <Update />
+    <div className='flex justify-center items-center gap-60'>
+      <UpdateUserData />
+      <UpdatePassword />
     </div>
   );
 }
