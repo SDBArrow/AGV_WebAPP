@@ -40,14 +40,12 @@ class Connection extends Component {
             console.log("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
             console.log("connection problem");
         }
-
-
     }
 
     render() {
         return (
             <div>
-                <Alert className="text-center m-3"
+                <Alert className = {"mt-5 p-4 mb-4 text-center rounded-lg" + (this.state.connected ? " text-green-700 bg-green-100 dark:bg-green-200 dark:text-green-800" : "text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800")}
                     variant={this.state.connected ? "success" : "danger"}>
                     {this.state.connected ? "AGV connected" : "AGV Dissconnected"}
                 </Alert>

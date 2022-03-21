@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import 'flowbite';
 
-function Header() {
+function Header(props) {
 
     const navigate = useNavigate();
 
-    function SignOut(){
+    function SignOut() {
         localStorage.removeItem('jwt')
         navigate('/Sign')
     }
@@ -15,7 +15,8 @@ function Header() {
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <span className="flex items-center self-center text-xl font-semibold whitespace-nowrap dark:text-white"><Link to="/">React ROS AGV</Link></span>
-                <div className="flex md:order-2">
+                <div className="flex gap-5 md:order-2">
+                    <span className="block py-2 pr-4 pl-3 self-center text-gray-700 border-b border-gray-100  md:border-0 md:p-0 dark:text-gray-400 dark:border-gray-700">{props.inputValue}</span>
                     <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={SignOut}>登出</button>
                     <button data-collapse-toggle="mobile-menu-4" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-4" aria-expanded="false">
                         <span className="sr-only">Open main menu</span>

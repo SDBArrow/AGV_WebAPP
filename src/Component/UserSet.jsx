@@ -1,10 +1,11 @@
 import React from 'react';
+import Update from './Update';
 
 function UserSet() {
 
   return (
     <div>
-      <h1>UserSet</h1>
+      <Update />
     </div>
   );
 }

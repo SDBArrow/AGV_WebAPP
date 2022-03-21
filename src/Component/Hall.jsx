@@ -4,7 +4,7 @@ function Hall() {
 
   return (
     <div>
-      <h1>Hall</h1>
+      <h1 className='mt-5 text-center'>Hall</h1>
     </div>
   );
 }

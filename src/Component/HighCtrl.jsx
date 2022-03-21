@@ -7,11 +7,12 @@ function ControlPage() {
 
   return (
     <div>
-      <p className="text-center text-5xl mt-5">AGV Control Page</p>
+      <p className="text-center text-5xl mt-5">AGV Set Page</p>
       <Connection />
-      <h1>MAP</h1>
-      <Map></Map>
-      <RobotState />
+      <div className="flex justify-center items-center gap-60">
+        <RobotState />
+        <Map />
+      </div>
     </div>
   );
 }

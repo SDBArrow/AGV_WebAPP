@@ -22,7 +22,8 @@ function WorkPage() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "41") {
-
+          const name = (responseJson.data.firstname+responseJson.data.lastname) 
+          setInputValue(name)
         } else {
           navigate('/Sign')
         }
@@ -31,7 +32,7 @@ function WorkPage() {
 
   return (
     <div className='h-full w-screen'>
-      <Header />
+      <Header inputValue={inputValue}/>
       <Outlet />
       <Footer />
     </div>
