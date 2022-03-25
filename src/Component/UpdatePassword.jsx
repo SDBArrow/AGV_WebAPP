@@ -59,10 +59,8 @@ function UpdataPassword() {
     function registeraccount() {
         /*
         const data = {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
             password: password,
+            jwt: jwt
         }
         const requestOptions = {
             method: 'POST',
@@ -71,15 +69,13 @@ function UpdataPassword() {
             }),
             body: JSON.stringify(data)
         };
-        fetch('https://sign-register.herokuapp.com/create_user.php', requestOptions)
+        fetch('https://sign-register.herokuapp.com/update_user.php', requestOptions)
             .then(response => response.json())
             .then((responseJson) => {
-                if (responseJson.code === "51") {
-                    navigate('/Sign')
-                } else if (responseJson.code === "52") {
+                if (responseJson.code === "31") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
-                } else if (responseJson.code === "53") {
+                } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }
