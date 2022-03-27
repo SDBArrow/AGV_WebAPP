@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function Update() {
@@ -7,6 +8,7 @@ function Update() {
     const [disable, setDisable] = useState(false)
     const [ButtonPop, setButtonPop] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const navigate = useNavigate();
 
     const GetFirstName = (event) => {
         setFirstName(event.target.value)
@@ -43,8 +45,7 @@ function Update() {
             .then((responseJson) => {
                 if (responseJson.code === "31") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    setInputValue(responseJson.message)
-                    setButtonPop(true)
+                    navigate('/')
                 } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)

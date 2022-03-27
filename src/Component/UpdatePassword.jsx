@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function UpdataPassword() {
@@ -7,6 +8,7 @@ function UpdataPassword() {
     const [disable, setDisable] = useState(true)
     const [ButtonPop, setButtonPop] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const navigate = useNavigate();
 
     const GetPassword = (event) => {
         setPassword(event.target.value)
@@ -15,9 +17,7 @@ function UpdataPassword() {
         setPasswordCheck(event.target.value)
     }
 
-
     //判斷密碼
-    
     useEffect(() => {
         const passwordRule = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/
         if ((password !== "") && (passwordcheck !== "")) {
@@ -32,10 +32,10 @@ function UpdataPassword() {
     }, [password, passwordcheck]);
 
     function updatepassword() {
-        
+
         const data = {
             password: password,
-            jwt: localStorage.getItem("jwt") 
+            jwt: localStorage.getItem("jwt")
         }
         const requestOptions = {
             method: 'POST',
@@ -49,8 +49,7 @@ function UpdataPassword() {
             .then((responseJson) => {
                 if (responseJson.code === "31") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    setInputValue(responseJson.message)
-                    setButtonPop(true)
+                    navigate('/')
                 } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
