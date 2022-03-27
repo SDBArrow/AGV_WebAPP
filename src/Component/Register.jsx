@@ -8,7 +8,7 @@ function Register() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordcheck, setPasswordCheck] = useState("")
-    const [disable, setDisable] = useState(false)
+    const [disable, setDisable] = useState(true)
     const [input_email, setinput_email] = useState(false)
     const [input_password, setinput_password] = useState(false)
     const [input_name, setinput_name] = useState(false)

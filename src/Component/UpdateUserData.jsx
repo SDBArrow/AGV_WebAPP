@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function Update() {
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
     const [disable, setDisable] = useState(false)
-    const navigate = useNavigate();
     const [ButtonPop, setButtonPop] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
@@ -27,13 +25,11 @@ function Update() {
         }
     }, [firstname, lastname])
 
-    function registeraccount() {
-/*
+    function updateuserdata() {
         const data = {
             firstname: firstname,
             lastname: lastname,
-            email: email,
-            password: password,
+            jwt: localStorage.getItem("jwt") 
         }
         const requestOptions = {
             method: 'POST',
@@ -42,19 +38,17 @@ function Update() {
             }),
             body: JSON.stringify(data)
         };
-        fetch('https://sign-register.herokuapp.com/create_user.php', requestOptions)
+        fetch('https://sign-register.herokuapp.com/update_user.php', requestOptions)
             .then(response => response.json())
             .then((responseJson) => {
-                if (responseJson.code === "51") {
-                    navigate('/Sign')
-                } else if (responseJson.code === "52") {
+                if (responseJson.code === "31") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
-                } else if (responseJson.code === "53") {
+                } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }
-            })*/
+            })
     }
 
     return (
@@ -71,7 +65,7 @@ function Update() {
                     <input className="h-7 w-32 mt-1 ml-4 pl-1" type="lastname" name="lastname" placeholder="Ke" onChange={GetLastName} />
                 </div>
             </div>
-            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={registeraccount}>更改資料</button>
+            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={updateuserdata}>更改資料</button>
         </div>
     );
 }
