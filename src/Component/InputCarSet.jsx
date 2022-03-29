@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function InputCarSet() {
@@ -6,8 +7,12 @@ function InputCarSet() {
   const [ip, setIP] = useState("")
   const [port, setPort] = useState("")
   const [disable, setDisable] = useState(true)
+  const [rule_name, setRuleName] = useState(false)
+  const [rule_ip, setRuleIP] = useState(false)
+  const [rule_port, setRulePort] = useState(false)
   const [ButtonPop, setButtonPop] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const GetName = (event) => {
     setName(event.target.value)
@@ -19,9 +24,47 @@ function InputCarSet() {
     setPort(event.target.value)
   }
 
+  useEffect(() => {
+    if ( name != ""){
+      setRuleName(true)
+      if ( rule_ip && rule_port){
+        setDisable(false)
+      }
+    }else{
+      setRuleName(false)
+      setDisable(true)
+    }
+  }, [name]);
+
+  useEffect(() => {
+    const IPRule = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/
+    if ( ip.search(IPRule) !== -1){
+      setRuleIP(true)
+      if ( rule_port && rule_name){
+        setDisable(false)
+      }
+    }else{
+      setRuleIP(false)
+      setDisable(true)
+    }
+  }, [ip]);
+
+  useEffect(() => {
+    if(port <= 65535 && port >= 1){
+      setRulePort(true)
+      if ( rule_ip && rule_name){
+        setDisable(false)
+      }
+    }else{
+      setRulePort(false)
+      setDisable(true)
+    }
+  }, [port]);
+
   function connect() {
     localStorage.setItem("ip", ip);
     localStorage.setItem("port", port);
+    navigate('/GeneralCtrl')
   }
 
   return (

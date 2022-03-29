@@ -5,6 +5,8 @@ class Connection extends Component {
     state = {
         connected: false,
         ros: null,
+        ip: localStorage.getItem("ip"),
+        port: localStorage.getItem("port"),
     };
 
     constructor() {
@@ -27,7 +29,7 @@ class Connection extends Component {
             //每三秒自動連接
             setTimeout(() => {
                 try {
-                    this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+                    this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
                 } catch (error) {
                     console.log("connection problem");
                 }
@@ -35,9 +37,9 @@ class Connection extends Component {
         });
 
         try {
-            this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
         } catch (error) {
-            console.log("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            console.log("ws://" + this.state.ip + ":" + this.state.port);
             console.log("connection problem");
         }
     }

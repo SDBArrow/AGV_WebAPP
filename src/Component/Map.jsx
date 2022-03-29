@@ -5,6 +5,8 @@ class Map extends Component {
 
     state = {
         ros: null,
+        ip: localStorage.getItem("ip"),
+        port: localStorage.getItem("port"),
     };
 
     constructor() {
@@ -16,9 +18,9 @@ class Map extends Component {
         this.state.ros = new window.ROSLIB.Ros();
         console.log(this.state.ros);
         try {
-            this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
         } catch (error) {
-            console.log("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            console.log("ws://" + this.state.ip + ":" + this.state.port);
             console.log("can't connect to the AGV.Try again after 1 second");
         }
     }

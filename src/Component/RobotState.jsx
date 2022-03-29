@@ -11,6 +11,8 @@ class RobotState extends Component {
         orientation: 0,
         linear_velocity: 0,
         angular_velocity: 0,
+        ip: localStorage.getItem("ip"),
+        port: localStorage.getItem("port"),
     }
 
     constructor() {
@@ -34,7 +36,7 @@ class RobotState extends Component {
             //每三秒自動連接
             setTimeout(() => {
                 try {
-                    this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+                    this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
                 } catch (error) {
                     console.log("connection problem");
                 }
@@ -42,9 +44,9 @@ class RobotState extends Component {
         });
 
         try {
-            this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
         } catch (error) {
-            console.log("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            console.log("ws://" + this.state.ip + ":" + this.state.port);
             console.log("connection problem");
         }
     }
