@@ -78,7 +78,6 @@ function ViewCarSet() {
           <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="Name" name="Name" onChange={GetName} />
         </div>
       </div>
-      <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={connect}>設定連線</button>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import UpdatePassword from './UpdatePassword';
 function UserSet() {
 
   return (
-    <div className='flex justify-evenly items-center flex-wrap '>
+    <div className='flex justify-evenly items-center flex-wrap'>
       <UpdatePassword />
       <UpdateUserData />
     </div>

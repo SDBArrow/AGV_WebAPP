@@ -8,8 +8,8 @@ function Hall() {
   return (
     <div className='flex justify-evenly items-center flex-wrap '>
       <InputCarSet />
-      <UpdateCarSet />
       <ViewCarSet />
+      <UpdateCarSet />
     </div>
   );
 }
