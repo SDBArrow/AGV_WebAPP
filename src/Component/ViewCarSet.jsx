@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import TodosList from "./TodosList"
-
+import InputCarSet from './InputCarSet';
+import Popup from './Popup';
 
 function ViewCarSet() {
 
   const [todos, setTodos] = useState([]);
+  const [ButtonPop, setButtonPop] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  function create_carset(){
+    setInputValue("測試")
+    setButtonPop(true)
+  }
 
   useEffect(() => {
     const data = { jwt: localStorage.getItem("jwt") }
@@ -20,11 +28,7 @@ function ViewCarSet() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "71") {
-          for (let i = 0; i < responseJson.data.length; i++) {
-            console.log(responseJson.data[i])
-            setTodos(responseJson.data)
-            //setTodos([...todos,{id: responseJson.data[i].id_car_set, car_name: responseJson.data[i].car_name, car_ip: responseJson.data[i].car_ip, car_port: responseJson.data[i].car_port}])
-          }
+          setTodos(responseJson.data)
         } else {
 
         }
@@ -33,9 +37,15 @@ function ViewCarSet() {
 
   return (
     <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
+      <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
       <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
-      <div className='h-2 mt-6'/>
+      <div className='h-2 mt-6' />
       <TodosList todos={todos} setTodos={setTodos} />
+      <div className='grid justify-items-center mt-8 '>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 cursor-pointer fill-red-400 hover:fill-red-700" onClick={create_carset} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
     </div>
   );
 }
