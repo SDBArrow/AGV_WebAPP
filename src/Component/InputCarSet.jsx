@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import 'flowbite';
 import Popup from './Popup';
 
 function InputCarSet() {
@@ -81,10 +82,12 @@ function InputCarSet() {
         if (responseJson.code === "61") {
           setInputValue(responseJson.message)
           setButtonPop(true)
-        } else if (responseJson.code === "62") {
+
+        } else if (responseJson.code === "43" || responseJson.code === "42") {
           setInputValue(responseJson.message)
           setButtonPop(true)
-        } else if (responseJson.code === "42") {
+
+        } else {
           setInputValue(responseJson.message)
           setButtonPop(true)
         }
@@ -92,28 +95,37 @@ function InputCarSet() {
   }
 
   return (
-    <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
-      <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
-      <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
-      <div className="bg-white h-20 mt-16  rounded-2xl py-3">
-        <label className="ml-4">AGV Name：</label>
-        <div className="flex mx-4">
-          <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="Name" name="Name" onChange={GetName} />
+    <div id="popup-modal" tabIndex="-1" className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full grid justify-items-center ">
+      <div className="relative p-4 w-full max-w-md h-full md:h-auto self-center">
+        <div className="w-96 bg-indigo-50 rounded-3xl pb-20 select-none px-4 mt-5">
+          <div className="flex justify-end p-2">
+            <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+            </button>
+          </div>
+          <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
+          <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain mt-12" />
+          <div className="bg-white h-20 mt-16  rounded-2xl py-3">
+            <label className="ml-4">AGV Name：</label>
+            <div className="flex mx-4">
+              <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="Name" name="Name" onChange={GetName} />
+            </div>
+          </div>
+          <div className="bg-white h-20 mt-8  rounded-2xl py-3">
+            <label className="ml-4">AGV IP：</label>
+            <div className="flex mx-4">
+              <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="ip" name="ip" onChange={GetIP} />
+            </div>
+          </div>
+          <div className="bg-white h-20 mt-8  rounded-2xl py-3">
+            <label className="ml-4">AGV Port：</label>
+            <div className="flex mx-4">
+              <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="port" name="port" onChange={GetPort} />
+            </div>
+          </div>
+          <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={connect}>儲存資料庫</button>
         </div>
       </div>
-      <div className="bg-white h-20 mt-8  rounded-2xl py-3">
-        <label className="ml-4">AGV IP：</label>
-        <div className="flex mx-4">
-          <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="ip" name="ip" onChange={GetIP} />
-        </div>
-      </div>
-      <div className="bg-white h-20 mt-8  rounded-2xl py-3">
-        <label className="ml-4">AGV Port：</label>
-        <div className="flex mx-4">
-          <input className="w-80 mt-1 pl-1 h-6 rounded-lg border-4" type="port" name="port" onChange={GetPort} />
-        </div>
-      </div>
-      <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disable} onClick={connect}>儲存資料庫</button>
     </div>
   );
 }

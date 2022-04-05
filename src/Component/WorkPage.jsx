@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react';
 import { useNavigate ,Outlet} from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
+import 'flowbite';
 
 function WorkPage() {
 
