@@ -97,7 +97,7 @@ function InputCarSet(inputcarset) {
   }
 
   return (inputcarset.trigger) ? (
-    <div className="grid justify-items-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full bg-gray-900/50">
+    <div className="grid justify-items-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-full md:h-full bg-gray-900/50">
       <div className="relative p-4 w-full max-w-md h-full md:h-auto self-center">
         <div className="w-96 bg-indigo-50 rounded-3xl pb-20 select-none px-4 mt-5">
           <div className="flex justify-end p-2">
