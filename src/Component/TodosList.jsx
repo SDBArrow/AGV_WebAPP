@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function TodosList({ todos, setTodos }) {
 
     const navigate = useNavigate();
+    const [ButtonPop, setButtonPop] = useState(false);
+    const [inputValue, setInputValue] = useState("");
     const handleChose = (todo) => {
         localStorage.setItem("car_name", todo.car_name);
         localStorage.setItem("ip", todo.car_ip);
