@@ -6,7 +6,7 @@ import Footer from './Footer';
 function WorkPage() {
 
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
+  const [firstname, setFirstName] = useState("");
 
   useEffect(() => {
     const data = { jwt: localStorage.getItem("jwt") }
@@ -22,8 +22,7 @@ function WorkPage() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "41") {
-          const name = (responseJson.data.firstname+responseJson.data.lastname) 
-          setInputValue(name)
+          setFirstName(responseJson.data.firstname)
         } else {
           navigate('/Sign')
         }
@@ -32,7 +31,7 @@ function WorkPage() {
 
   return (
     <div className='h-full w-screen'>
-      <Header inputValue={inputValue}/>
+      <Header firstname={firstname}/>
       <Outlet />
       <Footer />
     </div>
