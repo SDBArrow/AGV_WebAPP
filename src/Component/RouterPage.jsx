@@ -4,7 +4,7 @@ import Sign from './Sign';
 import Register from './Register';
 import Forget from './Forget';
 import Error from './Error';
-import Body from './Body';
+import WorkPage from './WorkPage';
 import HighCtrl from './HighCtrl';
 import Hall from './Hall';
 import GeneralCtrl from './GeneralCtrl';
@@ -14,7 +14,7 @@ function RouterPage() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Body />} >
+                <Route path="/" element={<WorkPage />} >
                     <Route index element={<Hall />} />
                     <Route path="/HighCtrl" element={<HighCtrl />} />
                     <Route path="/GeneralCtrl" element={<GeneralCtrl />} />

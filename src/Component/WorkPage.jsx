@@ -3,7 +3,7 @@ import { useNavigate ,Outlet} from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
 
-function Body() {
+function WorkPage() {
 
   const navigate = useNavigate();
   const [firstname, setFirstName] = useState("");
@@ -40,4 +40,4 @@ function Body() {
   );
 }
 
-export default Body;
+export default WorkPage;
