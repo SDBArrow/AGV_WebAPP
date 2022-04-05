@@ -84,7 +84,7 @@ function InputCarSet(inputcarset) {
         if (responseJson.code === "61") {
           inputcarset.setButtonInputCarSet(false)
         } else if (responseJson.code === "43" || responseJson.code === "42") {
-          setInputValue(responseJson.message+"，五秒後將跳轉")
+          setInputValue(responseJson.message + "，五秒後將跳轉")
           setButtonPop(true)
           setTimeout(function () {
             navigate('/Sign')
@@ -98,6 +98,7 @@ function InputCarSet(inputcarset) {
 
   return (inputcarset.trigger) ? (
     <div className="grid justify-items-center overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-full md:h-full bg-gray-900/50">
+      <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
       <div className="relative p-4 w-full max-w-md h-full md:h-auto self-center">
         <div className="w-96 bg-indigo-50 rounded-3xl pb-20 select-none px-4 mt-5">
           <div className="flex justify-end p-2">
@@ -105,7 +106,6 @@ function InputCarSet(inputcarset) {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
             </button>
           </div>
-          <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
           <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain mt-12" />
           <div className="bg-white h-20 mt-16  rounded-2xl py-3">
             <label className="ml-4">AGV Name：</label>

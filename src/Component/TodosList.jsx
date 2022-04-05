@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import Popup from './Popup';
 
 function TodosList({ todos, setTodos }) {
 
@@ -24,16 +25,24 @@ function TodosList({ todos, setTodos }) {
         fetch('https://sign-register.herokuapp.com/delete_carset.php', requestOptions)
             .then(response => response.json())
             .then((responseJson) => {
-                if (responseJson.code === "63") {
+                if (responseJson.code === "81") {
                     setTodos(todos.filter((todo) => todo.id_car_set !== id_car_set))
+                } else if (responseJson.code === "43" || responseJson.code === "42") {
+                    setInputValue(responseJson.message + "，五秒後將跳轉")
+                    setButtonPop(true)
+                    setTimeout(function () {
+                        navigate('/Sign')
+                    }, 5000);
                 } else {
-
+                    setInputValue(responseJson.message)
+                    setButtonPop(true)
                 }
             })
     }
 
     return (
         <div>
+            <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
             {todos.map((todo) => (
                 <div className="flex bg-white h-12 mt-8 rounded-2xl py-3" key={todo.id_car_set}>
                     <label className="ml-4 basis-3/4">車子名稱：{todo.car_name}</label>
