@@ -100,11 +100,12 @@ function Register() {
             .then(response => response.json())
             .then((responseJson) => {
                 if (responseJson.code === "51") {
-                    navigate('/Sign')
-                } else if (responseJson.code === "52") {
-                    setInputValue(responseJson.message)
+                    setInputValue(responseJson.message+"，3秒後自動跳轉更新")
                     setButtonPop(true)
-                } else if (responseJson.code === "53") {
+                    setTimeout(function () {
+                        navigate('/Sign')
+                      }, 3000);
+                } else {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }

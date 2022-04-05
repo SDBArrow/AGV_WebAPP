@@ -38,7 +38,11 @@ function Forget() {
             .then(response => response.json())
             .then((responseJson) => {
                 if (responseJson.code === "51") {
-                    navigate('/Sign')
+                    setInputValue(responseJson.message+"，3秒後自動跳轉更新")
+                    setButtonPop(true)
+                    setTimeout(function () {
+                        navigate('/Sign')
+                      }, 3000);
                 } else {
                     setInputValue(responseJson.message)
                     setButtonPop(true)

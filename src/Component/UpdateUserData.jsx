@@ -45,7 +45,11 @@ function Update() {
             .then((responseJson) => {
                 if (responseJson.code === "31") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    navigate('/')
+                    setInputValue(responseJson.message+"，3秒後自動跳轉更新")
+                    setButtonPop(true)
+                    setTimeout(function () {
+                        navigate('/')
+                      }, 3000);
                 } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)

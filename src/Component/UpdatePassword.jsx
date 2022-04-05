@@ -49,7 +49,8 @@ function UpdataPassword() {
             .then((responseJson) => {
                 if (responseJson.code === "31") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    navigate('/')
+                    setInputValue(responseJson.message)
+                    setButtonPop(true)
                 } else if (responseJson.code === "32") {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
