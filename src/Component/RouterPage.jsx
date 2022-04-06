@@ -9,6 +9,7 @@ import HighCtrl from './HighCtrl';
 import Hall from './Hall';
 import GeneralCtrl from './GeneralCtrl';
 import Userset from './UserSet';
+import Test from "./Test";
 
 function RouterPage() {
     return (
@@ -23,6 +24,7 @@ function RouterPage() {
                 <Route path="/Sign" element={<Sign />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Forget" element={<Forget />} />
+                <Route path="/Test" element={<Test />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </Router>
