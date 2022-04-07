@@ -1137,19 +1137,19 @@ ROS2D.Viewer = function (options) {
   this.height = options.height;
   var background = options.background || "#111111";
 
-  // create the canvas to render to
+  // create the canvas to render to 創建要渲染到的畫布
   var canvas = document.createElement("canvas");
   canvas.width = this.width;
   canvas.height = this.height;
   canvas.style.background = background;
   document.getElementById(divID).appendChild(canvas);
-  // create the easel to use
+  // create the easel to use 創建要使用的畫架
   this.scene = new createjs.Stage(canvas);
 
-  // change Y axis center
+  // change Y axis center 改變 Y 軸中心
   this.scene.y = this.height;
 
-  // add the renderer to the page
+  // add the renderer to the page 將渲染器添加到頁面
   document.getElementById(divID).appendChild(canvas);
 
   // update at 30fps
@@ -1158,7 +1158,7 @@ ROS2D.Viewer = function (options) {
 };
 
 /**
- * Add the given createjs object to the global scene in the viewer.
+ * Add the given createjs object to the global scene in the viewer. 將給定的 createjs 對象添加到查看器中的全局場景中。
  *
  * @param object - the object to add
  */
@@ -1167,13 +1167,13 @@ ROS2D.Viewer.prototype.addObject = function (object) {
 };
 
 /**
- * Scale the scene to fit the given width and height into the current canvas.
+ * Scale the scene to fit the given width and height into the current canvas. 縮放場景以使給定的寬度和高度適合當前畫布。
  *
- * @param width - the width to scale to in meters
+ * @param width - the width to scale to in meters 
  * @param height - the height to scale to in meters
  */
 ROS2D.Viewer.prototype.scaleToDimensions = function (width, height) {
-  // restore to values before shifting, if ocurred
+  // restore to values before shifting, if ocurred 恢復到移位前的值，發生
   this.scene.x =
     typeof this.scene.x_prev_shift !== "undefined"
       ? this.scene.x_prev_shift

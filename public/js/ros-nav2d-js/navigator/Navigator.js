@@ -98,7 +98,7 @@ NAV2D.Navigator = function (options) {
   }
 
   /**
-   * Cancel the currently active goal.
+   * Cancel the currently active goal. 取消當前活動的目標。
    */
   this.cancelGoal = function () {
     console.log("Cancel Goals");
@@ -175,7 +175,7 @@ NAV2D.Navigator = function (options) {
       updateRobotPosition(pose.position, pose.orientation);
     });
   }
-
+  //點擊後監聽器轉換為ros座標
   if (withOrientation === false) {
     // setup a double click listener (no orientation)
     this.rootObject.addEventListener("dblclick", function (event) {
@@ -185,6 +185,7 @@ NAV2D.Navigator = function (options) {
         position: new ROSLIB.Vector3(coords),
       });
       // send the goal
+      console.log(pose)
       sendGoal(pose);
     });
   } else {
@@ -201,7 +202,7 @@ NAV2D.Navigator = function (options) {
 
     var mouseEventHandler = function (event, mouseState) {
       if (mouseState === "down") {
-        // get position when mouse button is pressed down
+        // get position when mouse button is pressed down 滑鼠按下時獲得座標
         position = stage.globalToRos(event.stageX, event.stageY);
         positionVec3 = new ROSLIB.Vector3(position);
         mouseDown = true;
@@ -210,10 +211,10 @@ NAV2D.Navigator = function (options) {
         that.rootObject.removeChild(orientationMarker);
 
         if (mouseDown === true) {
-          // if mouse button is held down:
-          // - get current mouse position
-          // - calulate direction between stored <position> and current position
-          // - place orientation marker
+          // if mouse button is held down: 如果鼠標按住
+          // - get current mouse position  獲取當前鼠標位置
+          // - calulate direction between stored <position> and current position 計算存儲的 <position> 和當前位置之間的方向
+          // - place orientation marker 放置方向標記
           var currentPos = stage.globalToRos(event.stageX, event.stageY);
           var currentPosVec3 = new ROSLIB.Vector3(currentPos);
 
@@ -255,12 +256,12 @@ NAV2D.Navigator = function (options) {
           that.rootObject.addChild(orientationMarker);
         }
       } else if (mouseDown) {
-        // mouseState === 'up'
-        // if mouse button is released
-        // - get current mouse position (goalPos)
-        // - calulate direction between stored <position> and goal position
-        // - set pose with orientation
-        // - send goal
+        // mouseState === 'up' 
+        // if mouse button is released 如果鼠標按鈕被釋放
+        // - get current mouse position (goalPos) 獲取當前鼠標位置 (goalPos)
+        // - calulate direction between stored <position> and goal position 計算存儲的 <position> 和目標位置之間的方向
+        // - set pose with orientation  設置帶有方向的姿勢
+        // - send goal 發送目標
         mouseDown = false;
 
         var goalPos = stage.globalToRos(event.stageX, event.stageY);
