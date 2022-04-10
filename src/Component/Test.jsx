@@ -45,8 +45,9 @@ class Test extends Component {
         }
     }
 
+    
     componentDidMount() {
-        this.send_cmd_vel();
+        this.stop();
     }
 
     send_cmd_vel() {
@@ -71,10 +72,38 @@ class Test extends Component {
         cmd_vel.publish(Twist)
     }
 
+    stop(){
+        var stop = new window.ROSLIB.Topic({
+            ros: this.state.ros,
+            name: "/move_base/cancel",
+            messageType : 'actionlib_msgs/GoalID',
+        });
+
+        var GoalID = new window.ROSLIB.Message({
+            stamp :{
+                secs : 0,
+                nsecs : 0,
+            },
+            id : '',
+        })
+
+        stop.publish(GoalID)
+    }
+
+    clear_costmap(){
+        var clear_costmap = new window.ROSLIB.Service({
+            ros: this.state.ros,
+            name: "/move_base/clear_costmaps",
+            messageType : 'std_srvs/Empty',
+        });
+
+        clear_costmap.callService("{}")
+    }
 
     render() {
         return (
             <div>
+                <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" onClick={this.stop} >測試</button>
             </div>
         );
     }

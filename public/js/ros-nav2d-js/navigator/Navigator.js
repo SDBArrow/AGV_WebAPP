@@ -44,6 +44,7 @@ NAV2D.Navigator = function (options) {
   });
 
   /**
+   * 向 move_base 發送一個 goal
    * Send a goal to the navigation stack with the given pose.
    *
    * @param pose - the goal pose
@@ -65,7 +66,8 @@ NAV2D.Navigator = function (options) {
 
     that.currentGoal = goal;
 
-    // create a marker for the goal
+    // 為設定的目標建立圖標
+    // create a marker for the goal  
     if (that.goalMarker === null) {
       if (use_image && ROS2D.hasOwnProperty("ImageNavigator")) {
         that.goalMarker = new ROS2D.ImageNavigator({
@@ -98,7 +100,8 @@ NAV2D.Navigator = function (options) {
   }
 
   /**
-   * Cancel the currently active goal. 取消當前活動的目標。
+   * 取消當前的目標
+   * Cancel the currently active goal. 
    */
   this.cancelGoal = function () {
     console.log("Cancel Goals");
@@ -116,6 +119,7 @@ NAV2D.Navigator = function (options) {
     stage = that.rootObject.getStage();
   }
 
+  //建立機器人的圖標
   // marker for the robot
   var robotMarker = null;
   if (use_image && ROS2D.hasOwnProperty("ImageNavigator")) {
@@ -139,7 +143,8 @@ NAV2D.Navigator = function (options) {
   var initScaleSet = false;
 
   var updateRobotPosition = function (pose, orientation) {
-    // update the robots position on the map
+    // 更新機器人在地圖的座標
+    // update the robots position on the map 
     robotMarker.x = pose.x;
     robotMarker.y = -pose.y;
     console.log(initScaleSet);
@@ -148,7 +153,7 @@ NAV2D.Navigator = function (options) {
       robotMarker.scaleY = 1.0 / stage.scaleY;
       initScaleSet = true;
     }
-    // change the angle
+    // change the angle 
     robotMarker.rotation = stage.rosQuaternionToGlobalTheta(orientation);
     // Set visible
     robotMarker.visible = true;
@@ -159,7 +164,8 @@ NAV2D.Navigator = function (options) {
       updateRobotPosition(tf.translation, tf.rotation);
     });
   } else {
-    // setup a listener for the robot pose
+    // subscribe 機器人的pose
+    // setup a listener for the robot pose  
     var poseListener = new ROSLIB.Topic({
       ros: ros,
       name: robot_pose,
@@ -177,6 +183,7 @@ NAV2D.Navigator = function (options) {
   }
   //點擊後監聽器轉換為ros座標
   if (withOrientation === false) {
+    // 雙擊畫面
     // setup a double click listener (no orientation)
     this.rootObject.addEventListener("dblclick", function (event) {
       // convert to ROS coordinates
@@ -185,7 +192,6 @@ NAV2D.Navigator = function (options) {
         position: new ROSLIB.Vector3(coords),
       });
       // send the goal
-      console.log(pose)
       sendGoal(pose);
     });
   } else {
