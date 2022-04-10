@@ -45,7 +45,7 @@ class Test extends Component {
         }
     }
 
-    
+
     componentDidMount() {
         this.stop();
     }
@@ -54,47 +54,47 @@ class Test extends Component {
         var cmd_vel = new window.ROSLIB.Topic({
             ros: this.state.ros,
             name: "/cmd_vel",
-            messageType : 'geometry_msgs/Twist',
+            messageType: 'geometry_msgs/Twist',
         });
-        
+
         var Twist = new window.ROSLIB.Message({
-            linear :{
-                x : 0.5,
-                y : 0.0,
-                z : 0.0,
+            linear: {
+                x: 0.5,
+                y: 0.0,
+                z: 0.0,
             },
-            angular : {
-                x : 0.3,
-                y : 0.0,
-                z : 0.0,
+            angular: {
+                x: 0.3,
+                y: 0.0,
+                z: 0.0,
             }
         })
         cmd_vel.publish(Twist)
     }
 
-    stop(){
+    stop() {
         var stop = new window.ROSLIB.Topic({
             ros: this.state.ros,
             name: "/move_base/cancel",
-            messageType : 'actionlib_msgs/GoalID',
+            messageType: 'actionlib_msgs/GoalID',
         });
 
         var GoalID = new window.ROSLIB.Message({
-            stamp :{
-                secs : 0,
-                nsecs : 0,
+            stamp: {
+                secs: 0,
+                nsecs: 0,
             },
-            id : '',
+            id: '',
         })
 
         stop.publish(GoalID)
     }
 
-    clear_costmap(){
+    clear_costmap() {
         var clear_costmap = new window.ROSLIB.Service({
             ros: this.state.ros,
             name: "/move_base/clear_costmaps",
-            messageType : 'std_srvs/Empty',
+            messageType: 'std_srvs/Empty',
         });
 
         clear_costmap.callService("{}")
@@ -104,6 +104,7 @@ class Test extends Component {
         return (
             <div>
                 <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" onClick={this.stop} >測試</button>
+
             </div>
         );
     }
