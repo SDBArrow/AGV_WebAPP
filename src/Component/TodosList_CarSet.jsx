@@ -8,6 +8,7 @@ function TodosList({ todos, setTodos }) {
     const [ButtonPop, setButtonPop] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const handleChose = (todo) => {
+        localStorage.setItem("id_car_set", todo.id_car_set);
         localStorage.setItem("car_name", todo.car_name);
         localStorage.setItem("ip", todo.car_ip);
         localStorage.setItem("port", todo.car_port);

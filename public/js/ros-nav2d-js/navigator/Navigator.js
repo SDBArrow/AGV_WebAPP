@@ -99,6 +99,29 @@ NAV2D.Navigator = function (options) {
     });
   }
 
+
+  //座標存到資料庫
+  function saveGoal(pose) {
+    const data = { pose: pose, jwt: localStorage.getItem("jwt"), id_car_set: localStorage.getItem("id_car_set"), goal_name: localStorage.getItem("goal_name") }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+      body: JSON.stringify(data)
+    };
+    fetch('https://sign-register.herokuapp.com/create_goalset.php', requestOptions)
+      .then(response => response.json())
+      .then((responseJson) => {
+        if (responseJson.code === "41") {
+
+        } else {
+
+        }
+      })
+  }
+
   /**
    * 取消當前的目標
    * Cancel the currently active goal. 
@@ -119,7 +142,7 @@ NAV2D.Navigator = function (options) {
     stage = that.rootObject.getStage();
   }
 
-  //建立機器人的圖標
+  // 建立機器人的圖標
   // marker for the robot
   var robotMarker = null;
   if (use_image && ROS2D.hasOwnProperty("ImageNavigator")) {
@@ -175,6 +198,7 @@ NAV2D.Navigator = function (options) {
     poseListener.subscribe(function (pose) {
       //console.log(pose.position);
       //console.log(pose.orientation);
+
       console.log(that.rootObject);
       console.log(robotMarker);
       console.log("add robot marker");
@@ -192,7 +216,14 @@ NAV2D.Navigator = function (options) {
         position: new ROSLIB.Vector3(coords),
       });
       // send the goal
-      sendGoal(pose);
+      console.log("dblclick")
+      console.log("mode："+localStorage.getItem("mode"))
+      var mode = localStorage.getItem("mode")
+      if(mode == "true"){
+        console.log("mysql")
+      }else if ( mode == "false"){
+        sendGoal(pose);
+      }
     });
   } else {
     // withOrientation === true
@@ -274,6 +305,7 @@ NAV2D.Navigator = function (options) {
 
         var goalPosVec3 = new ROSLIB.Vector3(goalPos);
 
+        //計算orientation
         xDelta = goalPosVec3.x - positionVec3.x;
         yDelta = goalPosVec3.y - positionVec3.y;
 
@@ -294,8 +326,16 @@ NAV2D.Navigator = function (options) {
           position: positionVec3,
           orientation: orientation,
         });
+
         // send the goal
-        sendGoal(pose);
+        console.log("mouseDown")
+        console.log("mode："+localStorage.getItem("mode"))
+        var mode = localStorage.getItem("mode")
+        if(mode == "true"){
+          saveGoal(pose);
+        }else if ( mode == "false"){
+          sendGoal(pose);
+        }
       }
     };
 
