@@ -7,6 +7,7 @@ class Test extends Component {
         ros: null,
         ip: localStorage.getItem("ip"),
         port: localStorage.getItem("port"),
+        mode: true,
     }
 
     constructor() {
@@ -47,7 +48,7 @@ class Test extends Component {
 
 
     componentDidMount() {
-        this.stop();
+        //this.stop();
     }
 
     send_cmd_vel() {
@@ -100,11 +101,25 @@ class Test extends Component {
         clear_costmap.callService("{}")
     }
 
+    change_mode = () => {
+        this.setState({ mode: !this.state.mode }, () => {
+        });
+    }
+
     render() {
         return (
             <div>
                 <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" onClick={this.stop} >測試</button>
-
+                <div className='h-10 w-20 rounded-full bg-gray-100 relative'>
+                    <label htmlFor="check">
+                        <input type="checkbox" id="check" className="sr-only peer" />
+                        <span className='w-2/5 h-4/5 bg-rose-300 absolute rounded-full left-1 top-1 peer-checked:bg-rose-600 peer-checked:left-11 transition-all duration-500' onClick={this.change_mode} >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d={`${this.state.mode ? "M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" : "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"}`} />
+                            </svg>
+                        </span>
+                    </label>
+                </div>
             </div>
         );
     }

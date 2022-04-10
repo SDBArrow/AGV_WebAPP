@@ -10,6 +10,7 @@ import Hall from './Hall';
 import GeneralCtrl from './GeneralCtrl';
 import Userset from './UserSet';
 import Test from "./Test";
+import Test2 from "./Test2";
 
 function RouterPage() {
     return (
@@ -25,6 +26,7 @@ function RouterPage() {
                 <Route path="/Register" element={<Register />} />
                 <Route path="/Forget" element={<Forget />} />
                 <Route path="/Test" element={<Test />} />
+                <Route path="/Test2" element={<Test2 />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </Router>
