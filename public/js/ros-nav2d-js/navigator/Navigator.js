@@ -50,7 +50,6 @@ NAV2D.Navigator = function (options) {
    * @param pose - the goal pose
    */
   function sendGoal(pose) {
-    // create a goal
     var goal = new ROSLIB.Goal({
       actionClient: actionClient,
       goalMessage: {
@@ -199,9 +198,9 @@ NAV2D.Navigator = function (options) {
       //console.log(pose.position);
       //console.log(pose.orientation);
 
-      console.log(that.rootObject);
-      console.log(robotMarker);
-      console.log("add robot marker");
+      //console.log(that.rootObject);
+      //console.log(robotMarker);
+      //console.log("add robot marker");
       updateRobotPosition(pose.position, pose.orientation);
     });
   }

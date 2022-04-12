@@ -48,7 +48,7 @@ class Test extends Component {
 
 
     componentDidMount() {
-        //this.stop();
+        this.stop();
     }
 
     send_cmd_vel() {
