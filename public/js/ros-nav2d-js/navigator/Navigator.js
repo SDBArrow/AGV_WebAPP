@@ -50,6 +50,15 @@ NAV2D.Navigator = function (options) {
    * @param pose - the goal pose
    */
   function sendGoal(pose) {
+    //清除子圖
+    var clear_costmap = new window.ROSLIB.Service({
+      ros: this.state.ros,
+      name: "/move_base/clear_costmaps",
+      messageType: 'std_srvs/Empty',
+    });
+
+    clear_costmap.callService("{}")
+
     var goal = new ROSLIB.Goal({
       actionClient: actionClient,
       goalMessage: {
@@ -216,12 +225,11 @@ NAV2D.Navigator = function (options) {
       });
       // send the goal
       console.log("dblclick")
-      console.log("mode："+localStorage.getItem("mode"))
+      console.log("mode：" + localStorage.getItem("mode"))
       var mode = localStorage.getItem("mode")
-      if(mode == "true"){
-        console.log("mysql")
-      }else if ( mode == "false"){
-        sendGoal(pose);
+      if (mode == "true") {
+      } else if (mode == "false") {
+        //sendGoal(pose);
       }
     });
   } else {
@@ -327,12 +335,12 @@ NAV2D.Navigator = function (options) {
         });
 
         // send the goal
-        console.log("mouseDown")
-        console.log("mode："+localStorage.getItem("mode"))
         var mode = localStorage.getItem("mode")
-        if(mode == "true"){
+        if (mode == "true") {
+          console.log("mouseDown")
+          console.log("mode：" + localStorage.getItem("mode"))
           saveGoal(pose);
-        }else if ( mode == "false"){
+        } else if (mode == "false") {
           sendGoal(pose);
         }
       }

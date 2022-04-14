@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
-function TodosList({ todos, setTodos }) {
+function TodosList_GoalSet({ todos, setTodos }) {
 
     const navigate = useNavigate();
     const [ButtonPop, setButtonPop] = useState(false);
@@ -53,4 +53,4 @@ function TodosList({ todos, setTodos }) {
 
 }
 
-export default TodosList;
+export default TodosList_GoalSet;

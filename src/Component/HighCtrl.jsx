@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Connection from './Connection';
 import RobotState from './RobotState';
-import Map from './Map';
+import Map from './Map_HighCtrl';
 import TodosList from "./TodosList_GoalSet"
 
 function HighCtrl() {
@@ -11,7 +11,7 @@ function HighCtrl() {
   const [todos, setTodos] = useState([]);
   const [BT_GetGoalSet, setBT_GetGoalSet] = useState(false);
 
-  //開啟新增車子設定頁面
+
   function get_goalset() {
     setBT_GetGoalSet(!BT_GetGoalSet)
   }
@@ -32,7 +32,7 @@ function HighCtrl() {
     setGoalName(event.target.value)
   }
 
-  //開啟新增車子設定頁面
+  //更新 新增的Goal
   useEffect(() => {
 
     const data = { id_car_set: localStorage.getItem("id_car_set"), jwt: localStorage.getItem("jwt") }
@@ -53,7 +53,7 @@ function HighCtrl() {
 
         }
       })
-  }, [BT_GetGoalSet]) //開啟新增和刪除頁面時刷新
+  }, [BT_GetGoalSet]) //按刷新按鈕時
 
   return (
     <div>

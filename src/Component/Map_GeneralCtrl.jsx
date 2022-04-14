@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Config from '../scripts/Config';
 
-class Map extends Component {
+class Map_GeneralCtrl extends Component {
 
     state = {
         ros: null,
@@ -42,17 +42,17 @@ class Map extends Component {
             rootObject: viewer.scene,
             viewer: viewer,
             serverName: "/move_base",
-            withOrientation: true,
+            withOrientation: false,
         });
     }
 
     render() {
         return (
-            <div>
+            <div className='select-none'>
                 <div id="nav_div" className='text-center'>Map Viewer</div>
             </div>
         );
     }
 }
 
-export default Map;
+export default Map_GeneralCtrl;

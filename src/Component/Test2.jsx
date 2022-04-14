@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Config from "../scripts/Config";
+//import * as Three from "three";
+//import { Row, Col } from "react-bootstrap";
 
 
 function Test2() {
@@ -7,6 +9,11 @@ function Test2() {
     const [ip, setIP] = useState(localStorage.getItem("ip"))
     const [port, setPort] = useState(localStorage.getItem("port"))
     const [mode, setMode] = useState(true)
+/*
+    const [x, setX] = useState(0)
+    const [y, setY] = useState(0)
+    const [orientation, setOrientation] = useState(0)
+    const [connect, setConnect] = useState(false)*/
 
     useEffect(() => {
         init_connection()
@@ -97,6 +104,39 @@ function Test2() {
         setMode(!mode)
         localStorage.setItem("mode", mode);
     }
+/*
+    function getRobotState() {
+        try {
+            //創建一個pose訂閱
+            var pose_subscriber = new window.ROSLIB.Topic({
+                ros: ros,
+                name: "/robot_pose",
+                messageType: "geometry_msgs/Pose",
+            });
+            console.log("test1")
+            pose_subscriber.subscribe((message) => {
+                setX(message.position.x.toFixed(5))
+                setY(message.position.y.toFixed(5))
+                setOrientation(getOrientationFromQuaternion(message.orientation).toFixed(5))
+                //pose_subscriber.unsubscribe();
+            });
+            console.log("test2")
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    function getOrientationFromQuaternion(ros_orientation_quaternion) {
+        var q = new Three.Quaternion(   //Three 為 php 用來處理四元數的套件，這裡輸入從ros訂閱到的x、y、z、w
+            ros_orientation_quaternion.x,
+            ros_orientation_quaternion.y,
+            ros_orientation_quaternion.z,
+            ros_orientation_quaternion.w
+        );
+        //convert this quaternion into Roll, Pitch and yaw
+        var RPY = new Three.Euler().setFromQuaternion(q); //將四元數轉換成尤拉角
+        return RPY["_z"] * (180 / Math.PI);
+    }*/
 
     return (
         <div>
