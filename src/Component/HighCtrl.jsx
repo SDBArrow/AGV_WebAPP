@@ -10,6 +10,8 @@ function HighCtrl() {
   const [goal_name, setGoalName] = useState("")
   const [todos, setTodos] = useState([]);
   const [BT_GetGoalSet, setBT_GetGoalSet] = useState(false);
+  const [ButtonPop, setButtonPop] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
 
   function get_goalset() {

@@ -20,6 +20,7 @@
  *   * rootObject (optional) - the root object to add the click listeners to and render robot markers to
  *   * withOrientation (optional) - if the Navigator should consider the robot orientation (default: false)
  */
+//import Test3 from '../../../../src/Component/Test3'
 NAV2D.Navigator = function (options) {
   var that = this;
   options = options || {};
@@ -122,10 +123,9 @@ NAV2D.Navigator = function (options) {
     fetch('https://sign-register.herokuapp.com/create_goalset.php', requestOptions)
       .then(response => response.json())
       .then((responseJson) => {
-        if (responseJson.code === "41") {
-
+        if (responseJson.code === "91") {
+        } else if (responseJson.code === "43" || responseJson.code === "42") {
         } else {
-
         }
       })
   }
@@ -359,3 +359,4 @@ NAV2D.Navigator = function (options) {
     });
   }
 };
+
