@@ -3,7 +3,7 @@ import React from 'react';
 function Popup(props) {
     const { children, inputValue } = props;
     return (props.trigger) ? (
-        <div className="grid justify-items-center fixed inset-0 h-screen bg-gray-900/50">
+        <div className="grid justify-items-center fixed inset-0 h-screen bg-gray-900/50 z-50">
             <div className="relative p-4 h-auto self-center">
                 <div className="bg-white w-80 md:w-[40rem] h-20">
                     <button type="button" className="grid justify-end text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto items-center dark:hover:bg-gray-800 dark:hover:text-white"  onClick={() => props.setButtonPop(false)}>

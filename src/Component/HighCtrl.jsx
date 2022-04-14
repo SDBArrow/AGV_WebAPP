@@ -3,6 +3,7 @@ import Connection from './Connection';
 import RobotState from './RobotState';
 import Map from './Map_HighCtrl';
 import TodosList from "./TodosList_GoalSet"
+import Popup from './Popup';
 
 function HighCtrl() {
 
@@ -17,6 +18,17 @@ function HighCtrl() {
   function get_goalset() {
     setBT_GetGoalSet(!BT_GetGoalSet)
   }
+
+  function callPopup( msg ) {
+    setInputValue(msg)
+    setButtonPop(true)
+  }
+
+  useEffect(() => {
+    window.$callPopup = callPopup
+
+    console.log(window.$sendGoal)
+  }, [])
 
   useEffect(() => {
     localStorage.setItem("mode", mode);
@@ -59,6 +71,7 @@ function HighCtrl() {
 
   return (
     <div>
+       <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
       <p className="text-center text-5xl mt-5">AGV Set Page</p>
       <Connection />
       <div className="flex justify-evenly items-center flex-wrap-reverse ">

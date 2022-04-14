@@ -107,7 +107,7 @@ NAV2D.Navigator = function (options) {
       that.rootObject.removeChild(that.goalMarker);
     });
   }
-
+window.$sendGoal = sendGoal
 
   //座標存到資料庫
   function saveGoal(pose) {
@@ -123,9 +123,10 @@ NAV2D.Navigator = function (options) {
     fetch('https://sign-register.herokuapp.com/create_goalset.php', requestOptions)
       .then(response => response.json())
       .then((responseJson) => {
-        if (responseJson.code === "91") {
-        } else if (responseJson.code === "43" || responseJson.code === "42") {
+        if(window.$callPopup) {
+          window.$callPopup(responseJson.message)
         } else {
+          console.log("no $callPopup func.")
         }
       })
   }
