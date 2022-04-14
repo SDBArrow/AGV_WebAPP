@@ -48,7 +48,7 @@ class RobotState extends Component {
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         this.getRobotState();
     }
 
@@ -61,8 +61,8 @@ class RobotState extends Component {
         });
 
         pose_subscriber.subscribe((message) => {
-            this.setState({x: message.position.x.toFixed(5)});
-            this.setState({y: message.position.y.toFixed(5)});
+            this.setState({ x: message.position.x.toFixed(5) });
+            this.setState({ y: message.position.y.toFixed(5) });
             this.setState({
                 orientation: this.getOrientationFromQuaternion(
                     message.orientation
@@ -76,23 +76,19 @@ class RobotState extends Component {
             ros_orientation_quaternion.y,
             ros_orientation_quaternion.z,
             ros_orientation_quaternion.w
-            );
+        );
         //convert this quaternion into Roll, Pitch and yaw
         var RPY = new Three.Euler().setFromQuaternion(q); //將四元數轉換成尤拉角
-        return RPY["_z"] * (180/Math.PI);
+        return RPY["_z"] * (180 / Math.PI);
     }
 
     render() {
         return (
             <div>
-                <Row>
-                    <Col>
-                        <h4 className="mt-4">Position</h4>
-                        <p className="mt-0">x: {this.state.x}</p>
-                        <p className="mt-0">y: {this.state.y}</p>
-                        <p className="mt-0">Orientation: {this.state.orientation}</p>
-                    </Col>
-                </Row>
+                <div className="mt-10 text-blue-600 text-2xl text-center">車子座標資訊</div>
+                <div className="mt-2">x: {this.state.x}</div>
+                <div className="mt-0">y: {this.state.y}</div>
+                <div className="mt-0">Orientation: {this.state.orientation}</div>
             </div>
         );
     }
