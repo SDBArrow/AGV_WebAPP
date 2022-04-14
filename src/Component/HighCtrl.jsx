@@ -79,7 +79,7 @@ function HighCtrl() {
 
           <div className=' bg-indigo-50 rounded-3xl py-10 select-none px-4 mt-5 grid justify-items-center'>
             <div className='font-serif text-xl font-bold'>模式控制</div>
-            <div className='flex h-10 w-20 rounded-full mt-5 bg-gray-100 relative'>
+            <div className='flex h-10 w-20 rounded-full mt-5 bg-gray-300 relative'>
               <label htmlFor="check">
                 <input type="checkbox" id="check" className="sr-only peer" />
                 <span className='w-2/5 h-4/5 bg-red-500 absolute rounded-full left-1 top-1 peer-checked:bg-blue-500 peer-checked:left-11 transition-all duration-500' onClick={change_mode} >
