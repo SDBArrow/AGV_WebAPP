@@ -5,6 +5,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
     const [ros, setROS] = useState(null)
     const [ip, setIP] = useState(localStorage.getItem("ip"))
     const [port, setPort] = useState(localStorage.getItem("port"))
+    const [disabled, setDisabled] = useState(true)
     const [chose_goal_name, setGoalName] = useState("")
     const [chose_position_x, setPosition_x] = useState(0)
     const [chose_position_y, setPosition_y] = useState(0)
@@ -52,6 +53,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
         setPosition_y(position_y)
         setOrientation_z(orientation_z)
         setOrientation_w(orientation_w)
+        setDisabled(false)
     }
 
     function BT_SendGoal() {
@@ -96,6 +98,13 @@ function TodosList_GoalUse({ todos, setTodos }) {
             },
         });
         goal.send();
+
+        setGoalName("")
+        setPosition_x("")
+        setPosition_y("")
+        setOrientation_z("")
+        setOrientation_w("")
+        setDisabled(true)
     }
 
     return (
@@ -103,7 +112,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
             <div className="flex bg-white h-12 mt-8 rounded-2xl py-3" >
                 <label className="ml-4 basis-3/4">選定目標名稱：{chose_goal_name}</label>
             </div>
-            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" onClick={BT_SendGoal} >發送</button>
+            <button className="h-10 w-full mt-8 bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" disabled={disabled} onClick={BT_SendGoal} >發送</button>
             {todos.map((todo) => (
                 <div className="flex bg-white h-12 mt-8 rounded-2xl py-3" key={todo.id_goal_set}>
                     <label className="ml-4 basis-3/4">目標名稱：{todo.goal_name}</label>
