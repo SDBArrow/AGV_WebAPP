@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateCarSet from './UpdateCarSet';
+import ChoseCarSet from './ChoseCarSet';
 import ViewCarSet from './ViewCarSet';
 
 function Hall() {
@@ -7,7 +7,7 @@ function Hall() {
   return (
     <div className='flex justify-evenly items-center flex-wrap '>
       <ViewCarSet />
-      <UpdateCarSet />
+      <ChoseCarSet />
     </div>
   );
 }

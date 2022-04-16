@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ModeChange() {
+function Mode_Change() {
 
   const [mode, setMode] = useState(true)
   const [goal_name, setGoalName] = useState("")
@@ -43,4 +43,4 @@ function ModeChange() {
   );
 }
 
-export default ModeChange;
+export default Mode_Change;

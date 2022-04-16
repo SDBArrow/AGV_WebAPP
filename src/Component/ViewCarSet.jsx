@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import TodosList from "./TodosList_CarSet"
 import InputCarSet from './InputCarSet';
+import Popup from './Popup';
+import { useNavigate } from "react-router-dom";
 
 function ViewCarSet() {
 
   const [todos, setTodos] = useState([]);
-  const [ButtonInputCarSet, setButtonInputCarSet] = useState(false); 
+  const [ButtonInputCarSet, setButtonInputCarSet] = useState(false);
+  const [ButtonPop, setButtonPop] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   //開啟新增車子設定頁面
-  function create_carset(){
+  function create_carset() {
     setButtonInputCarSet(true)
   }
 
@@ -26,16 +31,24 @@ function ViewCarSet() {
     fetch('https://sign-register.herokuapp.com/get_carset.php', requestOptions)
       .then(response => response.json())
       .then((responseJson) => {
-        if (responseJson.code === "71") {
+        if (responseJson.code === "63") {
           setTodos(responseJson.data)
+        } else if (responseJson.code === "43" || responseJson.code === "42") {
+          setInputValue(responseJson.message + "，五秒後將跳轉")
+          setButtonPop(true)
+          setTimeout(function () {
+            navigate('/Sign')
+          }, 5000);
         } else {
-
+          setInputValue(responseJson.message)
+          setButtonPop(true)
         }
       })
   }, [ButtonInputCarSet]) //開啟新增和刪除頁面時刷新
 
   return (
     <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
+      <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
       <InputCarSet trigger={ButtonInputCarSet} setButtonInputCarSet={setButtonInputCarSet} />
       <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
       <div className='h-2 mt-6' />

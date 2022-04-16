@@ -4,7 +4,8 @@ import RobotState from './RobotState';
 import Map from './Map_HighCtrl';
 import TodosList from "./TodosList_GoalSet"
 import Popup from './Popup';
-import Mode_Change from './Mode_Change';
+import ModeChange from './Mode_Change';
+import { useNavigate } from "react-router-dom";
 
 function HighCtrl() {
 
@@ -12,20 +13,29 @@ function HighCtrl() {
   const [BT_GetGoalSet, setBT_GetGoalSet] = useState(false);
   const [ButtonPop, setButtonPop] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   function get_goalset() {
     setBT_GetGoalSet(!BT_GetGoalSet)
   }
 
+  //處理 Navigator CALL API 後回傳的資料
   function callPopup(msg) {
-    setInputValue(msg)
-    setButtonPop(true)
+    if (msg.code === "43" || msg.code === "42") {
+      setInputValue(msg.message + "，五秒後將跳轉")
+      setButtonPop(true)
+      setTimeout(function () {
+        navigate('/Sign')
+      }, 5000);
+    }else{
+      setInputValue(msg.message)
+      setButtonPop(true)
+    }
   }
 
   useEffect(() => {
-    window.$callPopup = callPopup
-
-    console.log(window.$sendGoal)
+    window.$callPopup = callPopup  //把 CallPopup function window 讓正在渲染的component 都能使用
+    //console.log(window.$sendGoal)
   }, [])
 
   //更新 新增的Goal
@@ -43,10 +53,17 @@ function HighCtrl() {
     fetch('https://sign-register.herokuapp.com/get_goalset.php', requestOptions)
       .then(response => response.json())
       .then((responseJson) => {
-        if (responseJson.code === "101") {
+        if (responseJson.code === "73") {
           setTodos(responseJson.data)
+        } else if (responseJson.code === "43" || responseJson.code === "42") {
+          setInputValue(responseJson.message + "，五秒後將跳轉")
+          setButtonPop(true)
+          setTimeout(function () {
+            navigate('/Sign')
+          }, 5000);
         } else {
-
+          setInputValue(responseJson.message)
+          setButtonPop(true)
         }
       })
   }, [BT_GetGoalSet]) //按刷新按鈕時
@@ -68,7 +85,7 @@ function HighCtrl() {
           </div>
         </div>
         <div>
-          <Mode_Change />
+          <ModeChange />
           <RobotState />
         </div>
         <Map />

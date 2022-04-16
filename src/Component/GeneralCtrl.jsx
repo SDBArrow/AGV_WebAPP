@@ -3,11 +3,16 @@ import Connection from './Connection';
 import RobotState from './RobotState';
 import Map from './Map_GeneralCtrl';
 import TodosList from "./TodosList_GoalUse"
+import Popup from './Popup';
+import { useNavigate } from "react-router-dom";
 
 function GeneralCtrl() {
 
   const [todos, setTodos] = useState([]);
   const [BT_GetGoalSet, setBT_GetGoalSet] = useState(false);
+  const [ButtonPop, setButtonPop] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   function get_goalset() {
     setBT_GetGoalSet(!BT_GetGoalSet)
@@ -28,16 +33,24 @@ function GeneralCtrl() {
     fetch('https://sign-register.herokuapp.com/get_goalset.php', requestOptions)
       .then(response => response.json())
       .then((responseJson) => {
-        if (responseJson.code === "101") {
+        if (responseJson.code === "73") {
           setTodos(responseJson.data)
+        } else if (responseJson.code === "43" || responseJson.code === "42") {
+          setInputValue(responseJson.message + "，五秒後將跳轉")
+          setButtonPop(true)
+          setTimeout(function () {
+            navigate('/Sign')
+          }, 5000);
         } else {
-
+          setInputValue(responseJson.message)
+          setButtonPop(true)
         }
       })
   }, [BT_GetGoalSet]) //按刷新按鈕時
 
   return (
     <div>
+      <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
       <p className="text-center text-5xl mt-5">AGV Set Page</p>
       <Connection />
       <div className="flex justify-evenly items-center flex-wrap-reverse ">

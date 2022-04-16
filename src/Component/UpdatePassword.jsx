@@ -51,7 +51,13 @@ function UpdataPassword() {
                     localStorage.setItem("jwt", responseJson.jwt);
                     setInputValue(responseJson.message)
                     setButtonPop(true)
-                } else if (responseJson.code === "32") {
+                } else if (responseJson.code === "43" || responseJson.code === "42") {
+                    setInputValue(responseJson.message + "，五秒後將跳轉")
+                    setButtonPop(true)
+                    setTimeout(function () {
+                        navigate('/Sign')
+                    }, 5000);
+                } else {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }

@@ -21,7 +21,7 @@ function TodosList_GoalSet({ todos, setTodos }) {
         fetch('https://sign-register.herokuapp.com/delete_goalset.php', requestOptions)
             .then(response => response.json())
             .then((responseJson) => {
-                if (responseJson.code === "111") {
+                if (responseJson.code === "75") {
                     setTodos(todos.filter((todo) => todo.id_goal_set !== id_goal_set))
                 } else if (responseJson.code === "43" || responseJson.code === "42") {
                     setInputValue(responseJson.message + "，五秒後將跳轉")

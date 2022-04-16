@@ -31,7 +31,7 @@ function Update() {
         const data = {
             firstname: firstname,
             lastname: lastname,
-            jwt: localStorage.getItem("jwt") 
+            jwt: localStorage.getItem("jwt")
         }
         const requestOptions = {
             method: 'POST',
@@ -45,12 +45,18 @@ function Update() {
             .then((responseJson) => {
                 if (responseJson.code === "31") {
                     localStorage.setItem("jwt", responseJson.jwt);
-                    setInputValue(responseJson.message+"，3秒後自動跳轉更新")
+                    setInputValue(responseJson.message + "，3秒後自動跳轉更新")
                     setButtonPop(true)
                     setTimeout(function () {
                         navigate('/')
-                      }, 3000);
-                } else if (responseJson.code === "32") {
+                    }, 3000);
+                } else if (responseJson.code === "43" || responseJson.code === "42") {
+                    setInputValue(responseJson.message + "，五秒後將跳轉")
+                    setButtonPop(true)
+                    setTimeout(function () {
+                        navigate('/Sign')
+                    }, 5000);
+                } else {
                     setInputValue(responseJson.message)
                     setButtonPop(true)
                 }

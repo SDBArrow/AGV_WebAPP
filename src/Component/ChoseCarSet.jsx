@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-function UpdateCarSet() {
+function ChoseCarSet() {
 
   const [car_name, setCar_Name] = useState("")
   const [car_ip, setCar_IP] = useState("")
@@ -35,4 +35,4 @@ function UpdateCarSet() {
   );
 }
 
-export default UpdateCarSet;
+export default ChoseCarSet;

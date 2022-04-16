@@ -28,7 +28,7 @@ function TodosList_CarSet({ todos, setTodos }) {
         fetch('https://sign-register.herokuapp.com/delete_carset.php', requestOptions)
             .then(response => response.json())
             .then((responseJson) => {
-                if (responseJson.code === "81") {
+                if (responseJson.code === "65") {
                     setTodos(todos.filter((todo) => todo.id_car_set !== id_car_set))
                 } else if (responseJson.code === "43" || responseJson.code === "42") {
                     setInputValue(responseJson.message + "，五秒後將跳轉")
