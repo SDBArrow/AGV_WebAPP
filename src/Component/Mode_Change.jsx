@@ -23,7 +23,7 @@ function Mode_Change() {
 
   return (
           <div className=' bg-indigo-50 rounded-3xl py-10 select-none px-4 mt-5 grid justify-items-center'>
-            <div className='font-serif text-xl font-bold'>模式控制</div>
+            <div className='font-serif text-xl font-bold'>模式切換</div>
             <div className='flex h-10 w-20 rounded-full mt-5 bg-gray-300 relative'>
               <label htmlFor="check">
                 <input type="checkbox" id="check" className="sr-only peer" />
