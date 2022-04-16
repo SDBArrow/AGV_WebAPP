@@ -35,7 +35,6 @@ function HighCtrl() {
 
   useEffect(() => {
     window.$callPopup = callPopup  //把 CallPopup function window 讓正在渲染的component 都能使用
-    //console.log(window.$sendGoal)
   }, [])
 
   //更新 新增的Goal

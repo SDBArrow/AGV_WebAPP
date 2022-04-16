@@ -56,15 +56,38 @@ function TodosList_GoalUse({ todos, setTodos }) {
         setDisabled(false)
     }
 
-    function BT_SendGoal() {
-        //清除costmap 避免被無法更新的地方影響到路徑規劃
+    function stop() {
+        var stop = new window.ROSLIB.Topic({
+            ros: ros,
+            name: "/move_base/cancel",
+            messageType: 'actionlib_msgs/GoalID',
+        });
+
+        var GoalID = new window.ROSLIB.Message({
+            stamp: {
+                secs: 0,
+                nsecs: 0,
+            },
+            id: '',
+        })
+
+        stop.publish(GoalID)
+    }
+
+    function clear_costmap() {
         var clear_costmap = new window.ROSLIB.Service({
-            ros: this.state.ros,
+            ros: ros,
             name: "/move_base/clear_costmaps",
             messageType: 'std_srvs/Empty',
         });
 
         clear_costmap.callService("{}")
+    }
+
+    function BT_SendGoal() {
+
+        stop()
+        clear_costmap()
 
         //發送導航
         var positionVec3 = new window.ROSLIB.Vector3({
@@ -80,6 +103,8 @@ function TodosList_GoalUse({ todos, setTodos }) {
             orientation: orientation,
         });
 
+        window.$sendGoal(pose)
+/*
         var actionClient = new window.ROSLIB.ActionClient({
             ros: ros,
             serverName: '/move_base',
@@ -97,8 +122,9 @@ function TodosList_GoalUse({ todos, setTodos }) {
                 },
             },
         });
-        goal.send();
+        goal.send();*/
 
+        //console.log(window.$sendGoal)
         setGoalName("")
         setPosition_x("")
         setPosition_y("")

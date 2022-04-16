@@ -50,15 +50,12 @@ NAV2D.Navigator = function (options) {
    *
    * @param pose - the goal pose
    */
-  function sendGoal(pose) {
-    //清除子圖
-    var clear_costmap = new window.ROSLIB.Service({
-      ros: this.state.ros,
-      name: "/move_base/clear_costmaps",
-      messageType: 'std_srvs/Empty',
-    });
 
-    clear_costmap.callService("{}")
+  // 把sendGoal放到windowu 以便呼叫
+  window.$sendGoal = sendGoal
+  function sendGoal(pose) {
+    that.rootObject.removeChild(that.goalMarker);
+    that.goalMarker = null
 
     var goal = new ROSLIB.Goal({
       actionClient: actionClient,
@@ -74,11 +71,12 @@ NAV2D.Navigator = function (options) {
     goal.send();
 
     that.currentGoal = goal;
-
     // 為設定的目標建立圖標
     // create a marker for the goal  
     if (that.goalMarker === null) {
+
       if (use_image && ROS2D.hasOwnProperty("ImageNavigator")) {
+
         that.goalMarker = new ROS2D.ImageNavigator({
           size: 2.5,
           image: use_image,
@@ -86,6 +84,7 @@ NAV2D.Navigator = function (options) {
           pulse: true,
         });
       } else {
+
         that.goalMarker = new ROS2D.NavigationArrow({
           size: 15,
           strokeSize: 1,
@@ -95,6 +94,7 @@ NAV2D.Navigator = function (options) {
       }
       that.rootObject.addChild(that.goalMarker);
     }
+
     that.goalMarker.x = pose.position.x;
     that.goalMarker.y = -pose.position.y;
     that.goalMarker.rotation = stage.rosQuaternionToGlobalTheta(
@@ -102,13 +102,8 @@ NAV2D.Navigator = function (options) {
     );
     that.goalMarker.scaleX = 1.0 / stage.scaleX;
     that.goalMarker.scaleY = 1.0 / stage.scaleY;
-
-    goal.on("result", function () {
-      that.rootObject.removeChild(that.goalMarker);
-    });
   }
 
-  //window.$sendGoal = sendGoal
   //座標存到資料庫
   function saveGoal(pose) {
     const data = { pose: pose, jwt: localStorage.getItem("jwt"), id_car_set: localStorage.getItem("id_car_set"), goal_name: window.$goal_name }
