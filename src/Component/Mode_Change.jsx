@@ -6,11 +6,11 @@ function Mode_Change() {
   const [goal_name, setGoalName] = useState("")
 
   useEffect(() => {
-    localStorage.setItem("mode", mode);
+    window.$mode= mode
   }, [mode]);
 
   useEffect(() => {
-    localStorage.setItem("goal_name", goal_name);
+    window.$goal_name= goal_name
   }, [goal_name]);
 
   function change_mode() {

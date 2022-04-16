@@ -111,7 +111,7 @@ NAV2D.Navigator = function (options) {
   //window.$sendGoal = sendGoal
   //座標存到資料庫
   function saveGoal(pose) {
-    const data = { pose: pose, jwt: localStorage.getItem("jwt"), id_car_set: localStorage.getItem("id_car_set"), goal_name: localStorage.getItem("goal_name") }
+    const data = { pose: pose, jwt: localStorage.getItem("jwt"), id_car_set: localStorage.getItem("id_car_set"), goal_name: window.$goal_name }
 
     const requestOptions = {
       method: 'POST',
@@ -226,10 +226,8 @@ NAV2D.Navigator = function (options) {
       });
       // send the goal
       console.log("dblclick")
-      console.log("mode：" + localStorage.getItem("mode"))
-      var mode = localStorage.getItem("mode")
-      if (mode == "true") {
-      } else if (mode == "false") {
+      if (window.$mode == true) {
+      } else if (window.$mode == false) {
         //sendGoal(pose);
       }
     });
@@ -336,12 +334,10 @@ NAV2D.Navigator = function (options) {
         });
 
         // send the goal
-        var mode = localStorage.getItem("mode")
-        if (mode == "true") {
+        if (window.$mode == true) {
           console.log("mouseDown")
-          console.log("mode：" + localStorage.getItem("mode"))
           saveGoal(pose);
-        } else if (mode == "false") {
+        } else if (window.$mode == false) {
           sendGoal(pose);
         }
       }
