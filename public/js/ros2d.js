@@ -486,6 +486,7 @@ ROS2D.NavigationArrow = function (options) {
   graphics.closePath();
   graphics.endFill();
   graphics.endStroke();
+  //console.log(graphics)
 
   // create the shape
   createjs.Shape.call(this, graphics);

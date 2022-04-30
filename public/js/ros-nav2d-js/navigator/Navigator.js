@@ -20,7 +20,7 @@
  *   * rootObject (optional) - the root object to add the click listeners to and render robot markers to
  *   * withOrientation (optional) - if the Navigator should consider the robot orientation (default: false)
  */
-//import Test3 from '../../../../src/Component/Test3'
+
 NAV2D.Navigator = function (options) {
   var that = this;
   options = options || {};
@@ -145,17 +145,19 @@ NAV2D.Navigator = function (options) {
   } else {
     stage = that.rootObject.getStage();
   }
-
+  
   // 建立機器人的圖標
   // marker for the robot
   var robotMarker = null;
   if (use_image && ROS2D.hasOwnProperty("ImageNavigator")) {
+    console.log("test0")
     robotMarker = new ROS2D.ImageNavigator({
       size: 2.5,
       image: use_image,
       pulse: true,
     });
   } else {
+    console.log("test1")
     robotMarker = new ROS2D.NavigationArrow({
       size: 25,
       strokeSize: 1,
