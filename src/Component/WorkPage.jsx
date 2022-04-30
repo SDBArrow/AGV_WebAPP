@@ -8,6 +8,7 @@ function WorkPage() {
   const navigate = useNavigate();
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
+  const [permissions, setPermissions] = useState(false);
 
   useEffect(() => {
     const data = { jwt: localStorage.getItem("jwt") }
@@ -25,6 +26,14 @@ function WorkPage() {
         if (responseJson.code === "41") {
           setFirstName(responseJson.data.firstname)
           setLastName(responseJson.data.lastname)
+          console.log("test:"+responseJson.data.permissions)
+          if(responseJson.data.permissions === 1 || responseJson.data.permissions === 2 ){
+            console.log("yes")
+            setPermissions(true)
+          }else{
+            console.log("no")
+            setPermissions(false)
+          }
         } else {
           navigate('/Sign')
         }
@@ -33,7 +42,7 @@ function WorkPage() {
 
   return (
     <div className='h-full w-screen'>
-      <Header firstname={firstname} lastname={lastname}/>
+      <Header firstname={firstname} lastname={lastname} permissions={permissions}/>
       <Outlet />
       <Footer />
     </div>
