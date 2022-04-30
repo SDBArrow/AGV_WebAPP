@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from './Image';
 import { Link, useNavigate } from "react-router-dom";
-import Popup from './Popup';
+import Popup from '../Popup';
 
 function Sign() {
     const [email, setEmail] = useState("")

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Connection from './Connection';
-import RobotState from './RobotState';
+import Connection from '../Connection';
+import RobotState from '../RobotState';
 import Map from './Map_HighCtrl';
 import TodosList from "./TodosList_GoalSet"
-import Popup from './Popup';
+import Popup from '../../Popup';
 import ModeChange from './Mode_Change';
 import { useNavigate } from "react-router-dom";
 

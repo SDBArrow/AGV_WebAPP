@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Popup from './Popup';
+import Popup from '../Popup';
 
 function Register() {
     const [firstname, setFirstName] = useState("")

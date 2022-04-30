@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Config from "../scripts/Config"
+import Config from "./scripts/Config"
 class Connection extends Component {
     state = {
         connected: false,

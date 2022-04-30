@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from "react-bootstrap";
-import Config from "../scripts/Config";
+import Config from "./scripts/Config";
 import * as Three from "three";
 
 class RobotState extends Component {

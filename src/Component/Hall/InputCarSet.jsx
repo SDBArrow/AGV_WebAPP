@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Popup from './Popup';
+import Popup from '../Popup';
 
 function InputCarSet(inputcarset) {
   const [name, setName] = useState("")

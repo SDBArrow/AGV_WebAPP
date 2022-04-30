@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Config from '../scripts/Config';
 
-class Map_HighCtrl extends Component {
+class Map_GeneralCtrl extends Component {
 
     state = {
         ros: null,
@@ -42,7 +41,7 @@ class Map_HighCtrl extends Component {
             rootObject: viewer.scene,
             viewer: viewer,
             serverName: "/move_base",
-            withOrientation: true,
+            withOrientation: false,
         });
     }
 
@@ -55,4 +54,4 @@ class Map_HighCtrl extends Component {
     }
 }
 
-export default Map_HighCtrl;
+export default Map_GeneralCtrl;

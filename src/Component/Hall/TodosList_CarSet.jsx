@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import Popup from './Popup';
+import Popup from '../Popup';
 
 function TodosList_CarSet({ todos, setTodos }) {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Popup from './Popup';
+import Popup from '../Popup';
 
 function UpdataPassword() {
     const [password, setPassword] = useState("")

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Connection from './Connection';
-import RobotState from './RobotState';
+import Connection from '../Connection';
+import RobotState from '../RobotState';
 import Map from './Map_GeneralCtrl';
 import TodosList from "./TodosList_GoalUse"
-import Popup from './Popup';
+import Popup from '../../Popup';
 import { useNavigate } from "react-router-dom";
 
 function GeneralCtrl() {

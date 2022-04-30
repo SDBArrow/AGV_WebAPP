@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sign from './Sign';
-import Register from './Register';
-import Forget from './Forget';
+import Sign from './MS/Sign';
+import Register from './MS/Register';
+import Forget from './MS/Forget';
 import Error from './Error';
 import WorkPage from './WorkPage';
-import HighCtrl from './HighCtrl';
-import Hall from './Hall';
-import GeneralCtrl from './GeneralCtrl';
-import Userset from './UserSet';
+import HighCtrl from './CtrlPage/HighCtrl/HighCtrl';
+import Hall from './Hall/Hall';
+import GeneralCtrl from './CtrlPage/GeneralCtrl/GeneralCtrl';
+import Userset from './UserSet/UserSet';
 //import Test from "./Test";
 //import Test2 from "./Test2";
 
