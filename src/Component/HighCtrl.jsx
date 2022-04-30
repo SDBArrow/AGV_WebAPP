@@ -6,7 +6,6 @@ import TodosList from "./TodosList_GoalSet"
 import Popup from './Popup';
 import ModeChange from './Mode_Change';
 import { useNavigate } from "react-router-dom";
-import logo2 from '../Image/logo2.png';
 
 function HighCtrl() {
 
@@ -36,7 +35,6 @@ function HighCtrl() {
 
   useEffect(() => {
     window.$callPopup = callPopup  //把 CallPopup function window 讓正在渲染的component 都能使用
-    window.$logo2 = logo2
   }, [])
 
   //更新 新增的Goal
