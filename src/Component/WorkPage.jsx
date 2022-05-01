@@ -26,12 +26,9 @@ function WorkPage() {
         if (responseJson.code === "41") {
           setFirstName(responseJson.data.firstname)
           setLastName(responseJson.data.lastname)
-          console.log("test:"+responseJson.data.permissions)
           if(responseJson.data.permissions === 1 || responseJson.data.permissions === 2 ){
-            console.log("yes")
             setPermissions(true)
           }else{
-            console.log("no")
             setPermissions(false)
           }
         } else {
