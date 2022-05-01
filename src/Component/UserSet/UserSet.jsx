@@ -49,11 +49,6 @@ function UserSet() {
         <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
         <div className='font-serif text-xl font-bold text-center mt-8'>會員清單</div>
         <TodosList todos={todos} setTodos={setTodos} />
-        <div className='grid justify-items-center mt-8 '>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 cursor-pointer fill-white hover:fill-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-        </div>
       </div>
     </div>
   );

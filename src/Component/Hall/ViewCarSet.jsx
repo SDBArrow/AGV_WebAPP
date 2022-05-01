@@ -27,7 +27,7 @@ function ViewCarSet() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "41") {
-          if(responseJson.data.permissions === 1 || responseJson.data.permissions === 2 ){
+          if(responseJson.data.permissions > 0 || responseJson.data.permissions <= 3 ){
             setPermissions(true)
           }else{
             setPermissions(false)
@@ -36,7 +36,7 @@ function ViewCarSet() {
           navigate('/Sign')
         }
       })
-  })
+  },[])
 
   //開啟新增車子設定頁面
   function create_carset() {
