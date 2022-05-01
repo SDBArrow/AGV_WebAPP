@@ -27,7 +27,7 @@ function ViewCarSet() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "41") {
-          if(responseJson.data.permissions > 0 || responseJson.data.permissions <= 3 ){
+          if(responseJson.data.permissions > 0 && responseJson.data.permissions <= 3 ){
             setPermissions(true)
           }else{
             setPermissions(false)
@@ -80,7 +80,7 @@ function ViewCarSet() {
       <div className='h-2 mt-6' />
       <div className='font-serif text-xl font-bold text-center'>AGV連線清單</div>
       <TodosList todos={todos} setTodos={setTodos} permissions={permissions}/>
-      <div className='grid justify-items-center mt-8 hidden '>
+      <div className={`grid justify-items-center mt-8 ${permissions ? "" : "hidden"}`}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 cursor-pointer fill-red-400 hover:fill-red-700" onClick={create_carset} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" >
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>

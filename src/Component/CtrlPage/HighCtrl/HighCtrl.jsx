@@ -35,6 +35,26 @@ function HighCtrl() {
 
   useEffect(() => {
     window.$callPopup = callPopup  //把 CallPopup function window 讓正在渲染的component 都能使用
+    const data = { jwt: localStorage.getItem("jwt") }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json; charset=UTF-8',
+      }),
+      body: JSON.stringify(data)
+    };
+    fetch('https://sign-register.herokuapp.com/validate_token.php', requestOptions)
+      .then(response => response.json())
+      .then((responseJson) => {
+        if (responseJson.code === "41") {
+          if( responseJson.data.permissions < 1 ){
+            navigate('/')
+          }
+        } else {
+          navigate('/Sign')
+        }
+      })
   }, [])
 
   //更新 新增的Goal
