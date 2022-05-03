@@ -55,7 +55,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
         setOrientation_w(orientation_w)
         setDisabled(false)
     }
-
+    
     function stop() {
         var stop = new window.ROSLIB.Topic({
             ros: ros,
@@ -85,7 +85,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
     }
 
     function BT_SendGoal() {
-
+        
         stop()
         clear_costmap()
 
@@ -104,7 +104,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
         });
 
         window.$sendGoal(pose)
-/*
+        /*  直接發送目標
         var actionClient = new window.ROSLIB.ActionClient({
             ros: ros,
             serverName: '/move_base',
@@ -123,8 +123,6 @@ function TodosList_GoalUse({ todos, setTodos }) {
             },
         });
         goal.send();*/
-
-        //console.log(window.$sendGoal)
         setGoalName("")
         setPosition_x("")
         setPosition_y("")
