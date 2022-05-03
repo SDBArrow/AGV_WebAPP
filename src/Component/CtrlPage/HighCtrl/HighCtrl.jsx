@@ -4,7 +4,7 @@ import RobotState from '../RobotState';
 import Map from './Map_HighCtrl';
 import TodosList from "./TodosList_GoalSet"
 import Popup from '../../Popup';
-import ModeChange from './Mode_Change';
+import Mode from './Mode_administrator';
 import { useNavigate } from "react-router-dom";
 
 function HighCtrl() {
@@ -104,7 +104,7 @@ function HighCtrl() {
           </div>
         </div>
         <div>
-          <ModeChange />
+          <Mode />
           <RobotState />
         </div>
         <Map />

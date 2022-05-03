@@ -7,7 +7,10 @@ class RobotState extends Component {
         ros: null,
         x: 0,
         y: 0,
+        power: 0,
         orientation: 0,
+        ip:localStorage.getItem("ip"),
+        port:localStorage.getItem("port"),
     }
 
     constructor() {
@@ -31,7 +34,7 @@ class RobotState extends Component {
             //每三秒自動連接
             setTimeout(() => {
                 try {
-                    this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+                    this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
                 } catch (error) {
                     console.log("connection problem");
                 }
@@ -39,9 +42,9 @@ class RobotState extends Component {
         });
 
         try {
-            this.state.ros.connect("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
         } catch (error) {
-            console.log("ws://" + Config.ROSBRIDGE_SERVER_IP + ":" + Config.ROSBRIDGE_SERVER_PROT);
+            console.log("ws://" + this.state.ip + ":" + this.state.port);
             console.log("connection problem");
         }
     }
@@ -84,10 +87,11 @@ class RobotState extends Component {
     render() {
         return (
             <div>
-                <div className="mt-10 text-blue-600 text-2xl text-center">車子座標資訊</div>
-                <div className="mt-2">x: {this.state.x}</div>
-                <div className="mt-0">y: {this.state.y}</div>
-                <div className="mt-0">Orientation: {this.state.orientation}</div>
+                <div className="mt-10 text-blue-600 text-2xl text-center">車子電量和座標資訊</div>
+                <div className="mt-2">電量：{this.state.power}</div>
+                <div className="mt-0">x： {this.state.x}</div>
+                <div className="mt-0">y： {this.state.y}</div>
+                <div className="mt-0">Orientation： {this.state.orientation}</div>
             </div>
         );
     }

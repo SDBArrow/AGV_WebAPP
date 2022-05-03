@@ -4,6 +4,7 @@ import RobotState from '../RobotState';
 import Map from './Map_GeneralCtrl';
 import TodosList from "./TodosList_GoalUse"
 import Popup from '../../Popup';
+import Mode from './Mode_User';
 import { useNavigate } from "react-router-dom";
 
 function GeneralCtrl() {
@@ -65,8 +66,9 @@ function GeneralCtrl() {
             </svg>
           </div>
         </div>
-        
+
         <div>
+          <Mode />
           <RobotState />
         </div>
         <Map />

@@ -2,50 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Config from "../scripts/Config";
 
 function TodosList_GoalUse({ todos, setTodos }) {
-    const [ros, setROS] = useState(null)
-    const [ip, setIP] = useState(localStorage.getItem("ip"))
-    const [port, setPort] = useState(localStorage.getItem("port"))
     const [disabled, setDisabled] = useState(true)
     const [chose_goal_name, setGoalName] = useState("")
     const [chose_position_x, setPosition_x] = useState(0)
     const [chose_position_y, setPosition_y] = useState(0)
     const [chose_orientation_z, setOrientation_z] = useState(0)
     const [chose_orientation_w, setOrientation_w] = useState(0)
-
-    useEffect(() => {
-        init_connection()
-    }, []);
-
-    function init_connection() {
-
-        var ros_ = new window.ROSLIB.Ros()
-        console.log(ros);
-
-        ros_.on("connection", () => {
-            console.log("Connection established in Teleoperation Component!");
-            console.log(ros_);
-            setROS(ros_)
-        });
-
-        ros_.on("close", () => {
-            console.log("Connection is Closed!");
-            //每三秒自動連接
-            setTimeout(() => {
-                try {
-                    ros_.connect("ws://" + ip + ":" + port);
-                } catch (error) {
-                    console.log("connection problem");
-                }
-            }, Config.RECONNECTION_TIMER);
-        });
-
-        try {
-            ros_.connect("ws://" + ip + ":" + port);
-        } catch (error) {
-            console.log("ws://" + ip + ":" + port);
-            console.log("connection problem");
-        }
-    }
 
     const ChoseGoal = ({ goal_name, position_x, position_y, orientation_z, orientation_w }) => {
         setGoalName(goal_name)
@@ -55,39 +17,11 @@ function TodosList_GoalUse({ todos, setTodos }) {
         setOrientation_w(orientation_w)
         setDisabled(false)
     }
-    
-    function stop() {
-        var stop = new window.ROSLIB.Topic({
-            ros: ros,
-            name: "/move_base/cancel",
-            messageType: 'actionlib_msgs/GoalID',
-        });
-
-        var GoalID = new window.ROSLIB.Message({
-            stamp: {
-                secs: 0,
-                nsecs: 0,
-            },
-            id: '',
-        })
-
-        stop.publish(GoalID)
-    }
-
-    function clear_costmap() {
-        var clear_costmap = new window.ROSLIB.Service({
-            ros: ros,
-            name: "/move_base/clear_costmaps",
-            messageType: 'std_srvs/Empty',
-        });
-
-        clear_costmap.callService("{}")
-    }
 
     function BT_SendGoal() {
         
-        stop()
-        clear_costmap()
+        //stop(ros)
+        //clear_costmap(ros)
 
         //發送導航
         var positionVec3 = new window.ROSLIB.Vector3({

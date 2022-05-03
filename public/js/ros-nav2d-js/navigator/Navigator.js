@@ -54,6 +54,9 @@ NAV2D.Navigator = function (options) {
   // 把sendGoal放到windowu 以便呼叫
   window.$sendGoal = sendGoal
   function sendGoal(pose) {
+
+    window.$stop(ros)
+    window.$clear_costmap(ros)
     that.rootObject.removeChild(that.goalMarker);
     that.goalMarker = null
 
