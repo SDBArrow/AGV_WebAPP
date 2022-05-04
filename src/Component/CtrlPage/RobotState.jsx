@@ -52,6 +52,20 @@ class RobotState extends Component {
 
     componentDidMount() {
         this.getRobotState();
+        this.getRobotPower();
+    }
+
+    getRobotPower() {
+        //創建一個pose訂閱
+        var pose_subscriber = new window.ROSLIB.Topic({
+            ros: this.state.ros,
+            name: "/power",
+            messageType: "std_msgs/UInt16",
+        });
+
+        pose_subscriber.subscribe((message) => {
+            this.setState({ power: message.data.toFixed(5) });
+        });
     }
 
     getRobotState() {
