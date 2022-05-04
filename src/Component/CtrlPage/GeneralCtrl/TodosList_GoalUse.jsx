@@ -19,7 +19,7 @@ function TodosList_GoalUse({ todos, setTodos }) {
     }
 
     function BT_SendGoal() {
-        
+
         //stop(ros)
         //clear_costmap(ros)
 

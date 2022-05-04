@@ -121,7 +121,7 @@ function Mode_Change() {
       <div className="mt-5 font-serif text-center text-blue-600">Mode：{mode ? "新增模式" : "導航模式"}</div>
       <div className={`bg-white rounded-2xl w-40 py-3 mt-5 ${mode ? "" : "hidden"}`}>
         <label className="ml-4">新增的目標名稱：</label>
-        <input className="h-7 w-32 mt-1 ml-4 pl-1" placeholder="座位1" onChange={GetGoalName} />
+        <input className="h-7 w-32 mt-1 ml-4 pl-1" placeholder="目標名稱" onChange={GetGoalName} />
       </div>
       <div className={`bg-white rounded-2xl w-40 py-3 mt-5 ${mode ? "hidden" : ""}`}>
         <button className="h-10 w-full bg-indigo-800 text-white rounded-3xl cursor-pointer hover:bg-sky-700 active:bg-indigo-800 disabled:bg-black disabled:cursor-default" onClick={stopnow}>強制停止</button>

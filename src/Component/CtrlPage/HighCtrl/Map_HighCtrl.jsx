@@ -47,8 +47,10 @@ class Map_HighCtrl extends Component {
 
     render() {
         return (
-            <div className='select-none'>
-                <div id="nav_div" className='text-center'>Map Viewer(操作說明：按住滑鼠左鍵，並拉動方向後放開滑鼠左鍵)</div>
+            <div className='select-none mt-4'>
+                <div className='text-center'>Map Viewer (操作說明：按住滑鼠左鍵，並拉動方向後放開滑鼠左鍵)</div>
+                <div className='text-center'>橘色箭頭為車子當前位置、紅色箭頭為目標位置</div>
+                <div id="nav_div" />
             </div>
         );
     }

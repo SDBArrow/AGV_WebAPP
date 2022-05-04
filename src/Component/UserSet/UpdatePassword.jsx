@@ -68,7 +68,8 @@ function UpdataPassword() {
         <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
             <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
             <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
-            <div className="bg-white h-20 mt-16  rounded-2xl py-3">
+            <div className='font-serif text-xl font-bold text-center mt-8'>修改密碼</div>
+            <div className="bg-white h-20 mt-8 rounded-2xl py-3">
                 <label className="ml-4">新密碼 (包括英文大小寫，最多15碼，最少6碼)</label>
                 <div className="flex mx-4">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

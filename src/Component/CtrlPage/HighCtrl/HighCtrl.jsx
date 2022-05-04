@@ -27,7 +27,7 @@ function HighCtrl() {
       setTimeout(function () {
         navigate('/Sign')
       }, 5000);
-    }else{
+    } else {
       setInputValue(msg.message)
       setButtonPop(true)
     }
@@ -48,7 +48,7 @@ function HighCtrl() {
       .then(response => response.json())
       .then((responseJson) => {
         if (responseJson.code === "41") {
-          if( responseJson.data.permissions < 1 ){
+          if (responseJson.data.permissions < 1) {
             navigate('/')
           }
         } else {
@@ -90,12 +90,22 @@ function HighCtrl() {
   return (
     <div>
       <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
-      <p className="text-center text-5xl mt-5">AGV Set Page</p>
+      <p className="text-center text-5xl mt-5">AGV 管理員介面</p>
       <Connection />
-      <div className="flex justify-evenly items-center flex-wrap-reverse ">
+      <div className="flex justify-evenly items-start flex-wrap ">
         <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
           <div className="bg-logo1 w-full h-32 bg-no-repeat bg-center bg-contain " />
           <div className='font-serif text-xl font-bold text-center mt-8'>AGV Goal 清單</div>
+          <div className="flex justify-center mt-4 gap-2">
+            <div className="flex font-serif text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+              : 刷新儲存的目標點
+            </div>
+            <div className='flex font-serif text-sm'>
+              <svg className="w-5 h-5 fill-sky-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+              : 刪除目標
+            </div>
+          </div>
           <TodosList todos={todos} setTodos={setTodos} />
           <div className='grid justify-items-center mt-8 '>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 cursor-pointer fill-white hover:fill-red-300" onClick={get_goalset} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

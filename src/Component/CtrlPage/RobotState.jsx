@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Config from "./scripts/Config";
 import * as Three from "three";
+import Battery_Percentage from './Battery_Percentage';
 
 class RobotState extends Component {
     state = {
@@ -9,8 +10,8 @@ class RobotState extends Component {
         y: 0,
         power: 0,
         orientation: 0,
-        ip:localStorage.getItem("ip"),
-        port:localStorage.getItem("port"),
+        ip: localStorage.getItem("ip"),
+        port: localStorage.getItem("port"),
     }
 
     constructor() {
@@ -101,7 +102,8 @@ class RobotState extends Component {
     render() {
         return (
             <div>
-                <div className="mt-10 text-blue-600 text-2xl text-center">車子電量和座標資訊</div>
+                <Battery_Percentage power={this.state.power}/>
+                <div className="mt-10 text-blue-600 text-2xl text-center">車子座標資訊</div>
                 <div className="mt-2">電量：{this.state.power}</div>
                 <div className="mt-0">x： {this.state.x}</div>
                 <div className="mt-0">y： {this.state.y}</div>

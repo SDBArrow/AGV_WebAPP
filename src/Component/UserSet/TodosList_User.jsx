@@ -83,12 +83,8 @@ function TodosList_User({ todos, setTodos }) {
           <div className="flex ml-4 mt-2">
             <label className='basis-3/4'>權限：{todo.permissions}</label>
             <div className='flex gap-3'>
-              <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 cursor-pointer fill-green-400 hover:fill-green-700`} disabled={true} onClick={() => down_permissions(todo)} viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 cursor-pointer fill-sky-200 hover:fill-sky-600`} disabled={true} onClick={() => up_permissions(todo)} viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 cursor-pointer fill-green-400 hover:fill-green-700`} disabled={true} onClick={() => down_permissions(todo)} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 h-6 cursor-pointer fill-sky-200 hover:fill-sky-600`} disabled={true} onClick={() => up_permissions(todo)} viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" /></svg>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import React, { useEffect,useState } from 'react';
-import { useNavigate ,Outlet} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Outlet } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
 
@@ -26,9 +26,9 @@ function WorkPage() {
         if (responseJson.code === "41") {
           setFirstName(responseJson.data.firstname)
           setLastName(responseJson.data.lastname)
-          if( responseJson.data.permissions > 0 && responseJson.data.permissions <= 3 ){
+          if (responseJson.data.permissions > 0 && responseJson.data.permissions <= 3) {
             setPermissions(true)
-          }else{
+          } else {
             setPermissions(false)
           }
         } else {
@@ -39,7 +39,7 @@ function WorkPage() {
 
   return (
     <div className='h-full w-screen'>
-      <Header firstname={firstname} lastname={lastname} permissions={permissions}/>
+      <Header firstname={firstname} lastname={lastname} permissions={permissions} />
       <Outlet />
       <Footer />
     </div>

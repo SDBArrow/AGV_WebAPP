@@ -46,9 +46,9 @@ class Connection extends Component {
     render() {
         return (
             <div>
-                <div className = {"mt-5 p-4 mb-4 text-center rounded-lg" + (this.state.connected ? " text-green-700 bg-green-100 dark:bg-green-200 dark:text-green-800" : "text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800")}
+                <div className={"mt-5 p-4 mb-4 text-center rounded-lg" + (this.state.connected ? " text-green-700 bg-green-100 dark:bg-green-200 dark:text-green-800" : "text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800")}
                     variant={this.state.connected ? "success" : "danger"}>
-                    {this.state.connected ? "AGV connected" : "AGV Dissconnected"}
+                    {this.state.connected ? "AGV 已連線" : "AGV 連線中斷"}
                 </div>
             </div>);
     }
