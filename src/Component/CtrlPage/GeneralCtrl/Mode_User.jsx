@@ -23,7 +23,7 @@ function Mode_Change() {
     ros_.on("connection", () => {
       console.log("Connection established in Teleoperation Component!");
       console.log(ros_);
-      setROS(ros_)
+      //setROS(ros_)
     });
 
     ros_.on("close", () => {

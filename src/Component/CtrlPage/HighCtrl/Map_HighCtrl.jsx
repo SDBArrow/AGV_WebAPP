@@ -15,7 +15,7 @@ class Map_HighCtrl extends Component {
 
     init_connection() {
         this.state.ros = new window.ROSLIB.Ros();
-        console.log(this.state.ros);
+        //console.log(this.state.ros);
         try {
             this.state.ros.connect("ws://" + this.state.ip + ":" + this.state.port);
         } catch (error) {

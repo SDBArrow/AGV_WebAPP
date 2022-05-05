@@ -18,11 +18,11 @@ function Mode_Change() {
   function init_connection() {
 
     var ros_ = new window.ROSLIB.Ros()
-    console.log(ros);
+    //console.log(ros);
 
     ros_.on("connection", () => {
       console.log("Connection established in Teleoperation Component!");
-      console.log(ros_);
+      //console.log(ros_);
       setROS(ros_)
     });
 
