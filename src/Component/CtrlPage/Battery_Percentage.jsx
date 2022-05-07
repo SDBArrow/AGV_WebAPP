@@ -3,14 +3,19 @@ import React, { useState, useEffect } from 'react';
 function Battery_Percentage(popup) {
 
   const [power, setPower] = useState(0);
+  const [delay, setDelay] = useState(false);
 
   useEffect(() => {
+    setPower(popup.power)
+  }, []);
 
+  useEffect(() => {
     setTimeout(function () {
       setPower(popup.power)
-    }, 5000);
-
-  }) //按刷新按鈕時
+      console.log(power)
+      setDelay(!delay)
+    }, 3000);
+  }, [delay]);
 
   var scope = {
     full: {
