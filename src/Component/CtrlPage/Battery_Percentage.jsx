@@ -4,17 +4,22 @@ function Battery_Percentage(popup) {
 
   const [power, setPower] = useState(0);
   const [delay, setDelay] = useState(false);
-
-  useEffect(() => {
-    setPower(popup.power)
-  }, []);
+  const [firstset, setFirstset] = useState(false);
 
   useEffect(() => {
     setTimeout(function () {
       setPower(popup.power)
-      console.log(power)
+      //console.log("yes")
       setDelay(!delay)
-    }, 3000);
+    }, 1000);
+  }, );
+
+  useEffect(() => {
+    setTimeout(function () {
+      setPower(popup.power)
+      //console.log("yes")
+      setDelay(!delay)
+    }, 1000);
   }, [delay]);
 
   var scope = {
