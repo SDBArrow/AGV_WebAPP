@@ -90,7 +90,7 @@ function HighCtrl() {
   return (
     <div>
       <Popup trigger={ButtonPop} setButtonPop={setButtonPop} inputValue={inputValue} />
-      <p className="text-center text-5xl mt-5">AGV 管理員介面</p>
+      <div className="text-center text-5xl mt-5">AGV 管理員介面</div>
       <Connection />
       <div className="flex justify-evenly items-start flex-wrap ">
         <div className="w-96 bg-indigo-50 rounded-3xl py-20 select-none px-4 mt-5">
